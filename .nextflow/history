@@ -1,3 +1,0 @@
-2026-04-23 16:49:57	1m 20s	nasty_meitner	ERR	2981791ab06f6551b8307927bbeb081e	a7325ecc-a073-4a18-a71e-7f5f65916d98	nextflow run pipeline/main.nf -profile test,conda --outdir results/test_run
-2026-04-23 16:58:00	1m 25s	modest_hilbert	ERR	2981791ab06f6551b8307927bbeb081e	966c6863-7c7c-4e99-97ff-8ab4e2b58769	nextflow run pipeline/main.nf -profile test,conda --outdir results/test_run
-2026-04-23 17:09:31	28m 6s	tender_mccarthy	OK	2981791ab06f6551b8307927bbeb081e	8d758a5b-e5fa-4a31-8f1b-c1cb5073bb09	nextflow run pipeline/main.nf -profile test,docker --outdir results/test_run
