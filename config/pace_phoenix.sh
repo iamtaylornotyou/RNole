@@ -13,7 +13,7 @@
 
 # Activate conda environment
 eval "$(/storage/project/r-jstroud36-0/tcooper84/miniconda3/bin/conda shell.bash hook)"
-conda activate rnole-hpc
+conda activate rnole-hpc2
 
 # Run pipeline
 cd /storage/project/r-jstroud36-0/tcooper84/RNole
