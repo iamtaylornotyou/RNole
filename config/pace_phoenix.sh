@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=rnole_pipeline
 #SBATCH --account=gts-jstroud36
-#SBATCH --partition=cpu-medium
+#SBATCH --partition=cpu-large
 #SBATCH --qos=inferno
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=24
-#SBATCH --mem=96G
+#SBATCH --mem=128G
 #SBATCH --time=24:00:00
 #SBATCH --output=logs/rnole_%j.out
 #SBATCH --error=logs/rnole_%j.err
