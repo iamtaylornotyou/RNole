@@ -19,11 +19,12 @@ conda activate rnole-hpc2
 cd /storage/project/r-jstroud36-0/tcooper84/RNole
 
 nextflow run pipeline/main.nf \
-    --input samplesheets/test_1k.csv \
+    --input samplesheets/test_1M.csv \
     --fasta ref/AnoSag.fna.gz \
     --gtf ref/AnoSag.gtf.gz \
-    --outdir results/test_1k_salmon \
+    --outdir results/test_1M_salmon \
     --pseudo_aligner salmon \
     --skip_alignment \
+    --salmon_index ref/AnoSag_salmon_index \
     -profile singularity \
     -c config/pace_phoenix.config
