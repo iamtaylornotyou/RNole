@@ -4,3 +4,4 @@ fastq/
 work/
 .nextflow/
 .nextflow.log*
+ref/
