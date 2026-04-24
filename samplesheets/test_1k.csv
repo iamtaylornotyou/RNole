@@ -1,0 +1,3 @@
+﻿sample,fastq_1,fastq_2,strandedness
+caro_1k,fastq/car_R1_1k.fastq.gz,fastq/car_R2_1k.fastq.gz,unstranded
+sag_1k,fastq/sag_R1_1k.fastq.gz,fastq/sag_R2_1k.fastq.gz,unstranded
