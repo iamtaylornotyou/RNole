@@ -1,0 +1,1198 @@
+---------------------------------------
+Begin Slurm Prolog: Apr-24-2026 18:29:35
+Job ID:    7418754
+User ID:   tcooper84
+Account:   gts-jstroud36
+Job name:  rnole_pipeline
+Partition: cpu-small
+QOS:       inferno
+---------------------------------------
+
+ N E X T F L O W   ~  version 25.10.4
+
+Launching `pipeline/main.nf` [dreamy_lamarck] DSL2 - revision: 2981791ab0
+
+
+------------------------------------------------------
+                                        ,--./,-.
+        ___     __   __   __   ___     /,-._.--~'
+  |\ | |__  __ /  ` /  \ |__) |__         }  {
+  | \| |       \__, \__/ |  \ |___     \`-._,-`-,
+                                        `._,._,'
+  nf-core/rnaseq 3.24.0
+------------------------------------------------------
+
+Input/output options
+  input                                    : samplesheets/test_1M.csv
+  outdir                                   : results/test_1M_salmon
+
+Reference genome options
+  fasta                                    : ref/AnoSag.fna.gz
+  gtf                                      : ref/AnoSag.gtf.gz
+  salmon_index                             : ref/AnoSag_salmon_index
+
+UMI options
+  umi_discard_read                         : 0
+
+Alignment options
+  pseudo_aligner                           : salmon
+
+Process skipping options
+  skip_alignment                           : true
+
+Generic options
+  trace_report_suffix                      : 2026-04-24_18-29-46
+
+Core Nextflow options
+  runName                                  : dreamy_lamarck
+  containerEngine                          : singularity
+  container..*STAR_ALIGN_IGENOMES          : community.wave.seqera.io/library/star_samtools_gawk:79ca42311e583cdc
+  container.STAR_GENOMEGENERATE_IGENOMES   : community.wave.seqera.io/library/star_samtools_gawk:79ca42311e583cdc
+  container..*PARABRICKS_STARGENOMEGENERATE: community.wave.seqera.io/library/htslib_samtools_star_gawk:4de2f983041d42e6
+  launchDir                                : /storage/project/r-jstroud36-0/tcooper84/RNole
+  workDir                                  : /storage/project/r-jstroud36-0/tcooper84/RNole/work
+  projectDir                               : /storage/project/r-jstroud36-0/tcooper84/RNole/pipeline
+  userName                                 : tcooper84
+  profile                                  : singularity
+  configFiles                              : /storage/project/r-jstroud36-0/tcooper84/RNole/pipeline/nextflow.config, /storage/project/r-jstroud36-0/tcooper84/RNole/config/pace_phoenix.config
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+------------------------------------------------------
+
+* The pipeline
+    https://doi.org/10.5281/zenodo.1400710
+
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/rnaseq/blob/master/CITATIONS.md
+
+WARN: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  '--skip_alignment' parameter has been provided.
+  Skipping alignment, genome-based quantification and all downstream QC processes.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 15 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 27 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF | 0 of 1
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT | 0 of 2
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (1)
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF | 0 of 1
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 0 of 2
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (2)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 0 of 1
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 0 of 2
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (3)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 0 of 1
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[85/bc9090] NFC…NDEDNESS:FQ_LINT (caro_1M) | 0 of 2
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (4)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 0 of 1
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[85/bc9090] NFC…NDEDNESS:FQ_LINT (caro_1M) | 0 of 2
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (4)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…PARE_GENOME:SAMTOOLS_FAIDX | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC | 0 of 2
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE | 0 of 2
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+
+executor >  slurm (5)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC | 0 of 2
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE | 0 of 2
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+
+executor >  slurm (6)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC | 0 of 2
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE | 0 of 2
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (7)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC | 0 of 2
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 0 of 2
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (8)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 0 of 2
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 0 of 2
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (9)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[8b/8fdb70] NFC…TRIMGALORE:FASTQC (sag_1M) | 0 of 2
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 0 of 2
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (10)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[8b/8fdb70] NFC…TRIMGALORE:FASTQC (sag_1M) | 0 of 2
+[22/41e142] NFC…ALORE:TRIMGALORE (caro_1M) | 0 of 2
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (10)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[8b/8fdb70] NFC…TRIMGALORE:FASTQC (sag_1M) | 0 of 2
+[22/41e142] NFC…ALORE:TRIMGALORE (caro_1M) | 0 of 2
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (10)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED | 0 of 1
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA | 0 of 1
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING | 0 of 2
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (11)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED | 0 of 1
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 0 of 1
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING | 0 of 2
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (12)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 0 of 1
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 0 of 1
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING | 0 of 2
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (13)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 0 of 1
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 0 of 1
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[65/758b6b] NFC…NT_AFTER_TRIMMING (sag_1M) | 0 of 2
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (14)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 0 of 1
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 0 of 1
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 0 of 2
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+
+executor >  slurm (14)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 0 of 1
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 0 of 1
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 0 of 2
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+Plus 31 more processes waiting for tasks…
+WARN: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Biotype attribute 'gene_biotype' not found in the last column of the GTF file!
+
+  Biotype QC will be skipped to circumvent the issue below:
+  https://github.com/nf-core/rnaseq/issues/460
+
+  Amend '--featurecounts_group_type' to change this behaviour.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+executor >  slurm (14)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[-        ] NFC…UDO_ALIGNMENT:SALMON_QUANT | 0 of 2
+Plus 30 more processes waiting for tasks…
+
+
+
+
+
+
+
+
+
+executor >  slurm (15)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[64/560ca4] NFC…MENT:SALMON_QUANT (sag_1M) | 0 of 2
+Plus 30 more processes waiting for tasks…
+
+
+
+
+
+
+
+
+
+executor >  slurm (16)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 0 of 2
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (16)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+Plus 30 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.10.4 [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/depot.galaxyproject.org-singularity-python-3.10.4.img]
+
+executor >  slurm (16)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE | 0 of 1
+Plus 29 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.10.4 [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/depot.galaxyproject.org-singularity-python-3.10.4.img]
+
+executor >  slurm (17)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 0 of 1
+Plus 29 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.10.4 [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/depot.galaxyproject.org-singularity-python-3.10.4.img]
+
+executor >  slurm (17)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+Plus 29 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-tximeta%3A1.20.1--r43hdfd78af_0 [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/depot.galaxyproject.org-singularity-bioconductor-tximeta%3A1.20.1--r43hdfd78af_0.img]
+
+
+executor >  slurm (17)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT | 0 of 1
+Plus 28 more processes waiting for tasks…
+
+
+executor >  slurm (18)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 0 of 1
+Plus 28 more processes waiting for tasks…
+
+
+executor >  slurm (18)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+Plus 28 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/1d/1d425b12748ce54c44c01a535a1ef5867a6e16cbf62c43151012e893444b1673/data [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-1d-1d425b12748ce54c44c01a535a1ef5867a6e16cbf62c43151012e893444b1673-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+executor >  slurm (18)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+[-        ] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 27 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/1d/1d425b12748ce54c44c01a535a1ef5867a6e16cbf62c43151012e893444b1673/data [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-1d-1d425b12748ce54c44c01a535a1ef5867a6e16cbf62c43151012e893444b1673-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+executor >  slurm (19)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+[35/174b94] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 27 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/1d/1d425b12748ce54c44c01a535a1ef5867a6e16cbf62c43151012e893444b1673/data [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-1d-1d425b12748ce54c44c01a535a1ef5867a6e16cbf62c43151012e893444b1673-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /storage/project/r-jstroud36-0/tcooper84/singularity_cache/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+executor >  slurm (19)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED | 0 of 1
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED | 0 of 1
+[35/174b94] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 25 more processes waiting for tasks…
+
+
+
+executor >  slurm (20)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED | 0 of 1
+[17/6ef107] NFC…RIPT_UNIFIED (all_samples) | 0 of 1
+[35/174b94] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 25 more processes waiting for tasks…
+
+
+
+executor >  slurm (21)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+[8c/235a88] NFC…GENE_UNIFIED (all_samples) | 0 of 1
+[17/6ef107] NFC…RIPT_UNIFIED (all_samples) | 0 of 1
+[35/174b94] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 25 more processes waiting for tasks…
+
+executor >  slurm (21)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+[8c/235a88] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[17/6ef107] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[35/174b94] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[-        ] NFCORE_RNASEQ:RNASEQ:MULTIQC   | 0 of 1
+Plus 24 more processes waiting for tasks…
+
+executor >  slurm (22)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+[8c/235a88] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[17/6ef107] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[35/174b94] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[49/dfe740] NFC…Q:MULTIQC (multiqc_report) | 0 of 1
+Plus 24 more processes waiting for tasks…
+
+executor >  slurm (22)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+[8c/235a88] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[17/6ef107] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[35/174b94] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[49/dfe740] NFC…Q:MULTIQC (multiqc_report) | 1 of 1 ✔
+Plus 24 more processes waiting for tasks…
+
+executor >  slurm (22)
+[bf/fa61cc] NFC…GUNZIP_GTF (AnoSag.gtf.gz) | 1 of 1 ✔
+[2e/3c8f38] NFC…NZIP_FASTA (AnoSag.fna.gz) | 1 of 1 ✔
+[65/77a6ce] NFC…ME:GTF_FILTER (AnoSag.fna) | 1 of 1 ✔
+[82/9f2b9f] NFC…2BED (AnoSag.filtered.gtf) | 1 of 1 ✔
+[02/8ed7a8] NFC…TS_FASTA (rsem/AnoSag.fna) | 1 of 1 ✔
+[e4/9fb930] NFC…AMTOOLS_FAIDX (AnoSag.fna) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[84/5ec5ba] NFC…ANDEDNESS:FQ_LINT (sag_1M) | 2 of 2 ✔
+[80/15df54] NFC…RIMGALORE:FASTQC (caro_1M) | 2 of 2 ✔
+[31/7d2d7c] NFC…GALORE:TRIMGALORE (sag_1M) | 2 of 2 ✔
+[ab/ae4ed6] NFC…T_AFTER_TRIMMING (caro_1M) | 2 of 2 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…FY_BAM_SALMON:SALMON_QUANT -
+[-        ] NFC…DEXPERIMENT:CUSTOM_TX2GENE -
+[-        ] NFC…XPERIMENT:TXIMETA_TXIMPORT -
+[-        ] NFC…EXPERIMENT:SE_GENE_UNIFIED -
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…NASEQ:DESEQ2_QC_BAM_SALMON -
+[24/81c34c] NFC…ENT:SALMON_QUANT (caro_1M) | 2 of 2 ✔
+[bc/87cb6d] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[b1/693c4c] NFC…ETA_TXIMPORT (all_samples) | 1 of 1 ✔
+[8c/235a88] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[17/6ef107] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[35/174b94] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[49/dfe740] NFC…Q:MULTIQC (multiqc_report) | 1 of 1 ✔
+Plus 24 more processes waiting for tasks…
+-[nf-core/rnaseq] Pipeline completed successfully -
+Completed at: 24-Apr-2026 19:00:10
+Duration    : 30m 20s
+CPU hours   : 0.8
+Succeeded   : 22
+
+
+---------------------------------------
+Begin Slurm Epilog: Apr-24-2026 19:00:11
+Job ID:        7418754
+User ID:       tcooper84
+Account:       gts-jstroud36
+Job name:      rnole_pipeline
+Resources:     cpu=24,mem=128G,node=1
+Rsrc Used:     cput=12:14:48,vmem=0,walltime=00:30:37,mem=5757100K,energy_used=0
+Partition:     cpu-small
+QOS:           inferno
+Nodes:         atl1-1-02-005-8-1
+---------------------------------------
