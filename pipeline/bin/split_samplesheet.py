@@ -2,7 +2,7 @@
 # usage: ./split_samplesheet.py <samplesheet file>
 
 import sys
-import pandas as pd
+import pandas as pd # type: ignore
 
 filename = sys.argv[1]
 df = pd.read_csv(filename, sep = ',')
