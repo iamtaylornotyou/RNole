@@ -9,7 +9,7 @@ config=$5
 rnaseq_pipeline=$6
 
 # nf-core/rnaseq call
-nextflow run ${rnaseq_pipeline} \
+nextflow run "${rnaseq_pipeline}" \
     --input ${bn}.csv \
     --fasta ${ref_path}/${bn}.fna.gz \
     --gtf ${ref_path}/${bn}.gtf.gz \
