@@ -30,7 +30,7 @@ process RUN_RNASEQ {
     val ref_full_path
 
     output:
-    path "*/salmon/salmon.merged.gene_counts.tsv"
+    path "**/salmon.merged.gene_counts.tsv"
 
     script:
     """
