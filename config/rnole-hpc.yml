@@ -1,4 +1,4 @@
-name: rnole-hpc2
+name: rnole-hpc
 channels:
   - defaults
 dependencies:
@@ -7,4 +7,4 @@ dependencies:
   - singularity=3.8.6
   - sra-tools
   - pandas
-prefix: /storage/project/r-jstroud36-0/tcooper84/miniconda3/envs/rnole-hpc2
+prefix: /storage/project/r-jstroud36-0/tcooper84/miniconda3/envs/rnole-hpc
