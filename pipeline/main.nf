@@ -7,6 +7,7 @@ params.ref_path           = 'ref'
 params.profile            = 'singularity'
 params.rnaseq_config      = 'config/pace_phoenix.config'
 params.rnaseq_pipeline    = "${projectDir}/../nf-core-rnaseq/main.nf"
+params.container_engine   = 'docker'
 
 // A process definition
 process SPLIT_SAMPLES {
@@ -34,7 +35,7 @@ process RUN_RNASEQ {
     script:
     """
     bn=\$(basename ${my_file} .csv)
-    run_rnaseq.sh \${bn} "${ref_full_path}" ${params.outdir} ${params.profile} "${rnaseq_config_path}" "${params.rnaseq_pipeline}"
+    run_rnaseq.sh \${bn} "${ref_full_path}" ${params.outdir} ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}"
     """
 }
 
