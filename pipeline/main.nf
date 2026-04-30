@@ -1,11 +1,11 @@
 #!/usr/bin/env nextflow
 
 // Parameters
-params.samplesheet = null
+params.input = null
 params.outdir      = 'results/unnamed_results'
 params.ref_path    = 'ref'
 params.profile     = 'singularity'
-params.config      = 'config/pace_phoenix.config'
+params.rnaseq_config      = 'config/pace_phoenix.config'
 params.rnaseq_pipeline = "${projectDir}/../nf-core-rnaseq/main.nf"
 
 // A process definition
@@ -32,14 +32,14 @@ process RUN_RNASEQ {
     script:
     """
     bn=\$(basename ${my_file} .csv)
-    run_rnaseq.sh ${bn} ${params.ref_path} ${params.outdir} ${params.profile} ${params.config} ${params.rnaseq_pipeline}
+    run_rnaseq.sh bn ${params.ref_path} ${params.outdir} ${params.profile} ${params.rnaseq_config} ${params.rnaseq_pipeline}
     """
 }
 
 // The workflow block
 workflow {
     // Create a channel from your input
-    ch_samplesheet = Channel.fromPath(params.samplesheet)
+    ch_samplesheet = Channel.fromPath(params.input)
     
     // Pass it to a process
     SPLIT_SAMPLES(ch_samplesheet)
