@@ -33,7 +33,7 @@ process RUN_RNASEQ {
     script:
     """
     bn=\$(basename ${my_file} .csv)
-    run_rnaseq.sh \${bn} ${params.ref_path} ${params.outdir} ${params.profile} ${rnaseq_config_path} "${params.rnaseq_pipeline}"
+    run_rnaseq.sh \${bn} ${params.ref_path} ${params.outdir} ${params.profile} "${rnaseq_config_path}"" "${params.rnaseq_pipeline}"
     """
 }
 
