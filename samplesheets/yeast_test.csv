@@ -1,0 +1,3 @@
+sample,fastq_1,fastq_2,strandedness
+SagCer,/Users/iamtaylornotyou/Desktop/RNole/fastq/SacCer_R1_1M.fastq,/Users/iamtaylornotyou/Desktop/RNole/fastq/SacCer_R2_1M.fastq,unstranded
+SchPom,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R1_1M.fastq,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R2_1M.fastq,unstranded
