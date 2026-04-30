@@ -32,7 +32,7 @@ process RUN_RNASEQ {
     script:
     """
     bn=\$(basename ${my_file} .csv)
-    run_rnaseq.sh bn ${params.ref_path} ${params.outdir} ${params.profile} ${params.rnaseq_config} ${params.rnaseq_pipeline}
+    run_rnaseq.sh ${bn} ${params.ref_path} ${params.outdir} ${params.profile} ${params.rnaseq_config} ${params.rnaseq_pipeline}
     """
 }
 
@@ -43,5 +43,5 @@ workflow {
     
     // Pass it to a process
     SPLIT_SAMPLES(ch_samplesheet)
-    RUN_RNASEQ(SPLIT_SAMPLES.out)
+    RUN_RNASEQ(SPLIT_SAMPLES.out.flatten())
 }
