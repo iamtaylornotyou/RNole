@@ -6,6 +6,7 @@ params.outdir      = 'results/unnamed_results'
 params.ref_path    = 'ref'
 params.profile     = 'singularity'
 params.config      = 'config/pace_phoenix.config'
+params.rnaseq_pipeline = "${projectDir}/../nf-core-rnaseq/main.nf"
 
 // A process definition
 process SPLIT_SAMPLES {
@@ -30,17 +31,8 @@ process RUN_RNASEQ {
 
     script:
     """
-    bn=$(basename ${my_file} .csv)
-    nextflow run nf-core-rnaseq/main.nf \
-        --input ${my_file} \
-        --fasta ${params.ref_path}/${bn}.fna.gz \
-        --gtf ${params.ref_path}/${bn}.gtf.gz \
-        --outdir ${params.outdir}/${bn} \
-        --pseudo_aligner salmon \
-        --skip_alignment \
-        --salmon_index ${params.ref_path}/${bn}_salmon_index \
-        -profile ${params.profile} \
-        -c ${params.config}
+    bn=\$(basename ${my_file} .csv)
+    run_rnaseq.sh ${bn} ${params.ref_path} ${params.outdir} ${params.profile} ${params.config} ${params.rnaseq_pipeline}
     """
 }
 
