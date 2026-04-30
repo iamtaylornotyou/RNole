@@ -1,5 +1,7 @@
 name: rnole-hpc
 channels:
+  - bioconda
+  - conda-forge
   - defaults
 dependencies:
   - seqtk
