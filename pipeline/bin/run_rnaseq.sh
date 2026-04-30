@@ -15,7 +15,7 @@ nextflow run "${rnaseq_pipeline}" \
     --gtf "${ref_path}/${bn}.gtf.gz" \
     --outdir "${outdir}/${bn}" \
     --pseudo_aligner salmon \
-    --skip_alignment \
+    --skip_alignment true \
     --salmon_index "${ref_path}/${bn}_salmon_index" \
     -profile "${profile}" \
     -c "${config}"
