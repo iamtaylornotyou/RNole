@@ -33,12 +33,12 @@ process RUN_RNASEQ {
     val ref_name
 
     output:
-    path "results/**/salmon.merged.gene_counts.tsv", emit: counts
-    path "results/**", emit: rnaseq_results
+    path "**/salmon.merged.gene_counts.tsv", emit: counts
+    path "${ref_name}/**", emit: rnaseq_results
 
     script:
     """
-    run_rnaseq.sh ${ref_name} "${ref_full_path}" results/ ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}"
+    run_rnaseq.sh ${ref_name} "${ref_full_path}" "./" ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}"
     """
 }
 
