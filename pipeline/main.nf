@@ -44,7 +44,7 @@ process RUN_RNASEQ {
 }
 
 process RUN_ORTHOFINDER {
-    publishDir "${params.outdir}/orthofinder", mode: 'copy', saveAs: { filename -> filename.minus("orthofinder_out/Results_*/") }
+    publishDir "${params.outdir}/orthofinder", mode: 'copy', saveAs: { filename -> filename.replaceAll("orthofinder_out/Results_[^/]+/", "") }
     
     input:
     path my_dir
