@@ -24,18 +24,21 @@ process SPLIT_SAMPLES {
 }
 
 process RUN_RNASEQ {
+    publishDir "${params.outdir}/${ref_name}", mode: 'copy'
+    
     input:
     path my_file
     val rnaseq_config_path
     val ref_full_path
+    val ref_name
 
     output:
-    path "**/salmon.merged.gene_counts.tsv"
+    path "results/**/salmon.merged.gene_counts.tsv", emit: counts
+    path "results/**", emit: rnaseq_results
 
     script:
     """
-    bn=\$(basename ${my_file} .csv)
-    run_rnaseq.sh \${bn} "${ref_full_path}" ${params.outdir} ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}"
+    run_rnaseq.sh ${ref_name} "${ref_full_path}" results/ ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}"
     """
 }
 
@@ -48,5 +51,8 @@ workflow {
     
     // Pass it to a process
     SPLIT_SAMPLES(ch_samplesheet)
-    RUN_RNASEQ(SPLIT_SAMPLES.out.flatten(), rnaseq_config_path, ref_full_path)
+    split_out = SPLIT_SAMPLES.out.flatten()
+    ref_name  = split_out.map { file -> file.baseName }
+    
+    RUN_RNASEQ(split_out, rnaseq_config_path, ref_full_path,ref_name)
 }
