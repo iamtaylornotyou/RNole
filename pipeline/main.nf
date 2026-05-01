@@ -45,8 +45,6 @@ process RUN_RNASEQ {
 
 process RUN_ORTHOFINDER {
     publishDir "${params.outdir}/orthofinder", mode: 'copy', saveAs: { filename -> filename.minus("orthofinder_out/") }
-
-    conda "${projectDir}/../config/rnole-ortho.yml"
     
     input:
     path my_dir
