@@ -1,0 +1,11 @@
+name: rnole-local
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+  - r
+dependencies:
+  - seqtk
+  - sra-tools
+  - nextflow
+  - pandas
