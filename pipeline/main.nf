@@ -44,14 +44,14 @@ process RUN_RNASEQ {
 }
 
 process RUN_ORTHOFINDER {
-    publishDir "${params.outdir}/orthofinder", mode: 'copy', saveAs: { filename -> filename.minus("orthofinder_out/") }
+    publishDir "${params.outdir}/orthofinder", mode: 'copy', saveAs: { filename -> filename.minus("orthofinder_out/Results_*/") }
     
     input:
     path my_dir
 
     output:
-    path "orthofinder_out/Orthogroups/Orthogroups.tsv", emit: ortholog_file
-    path "orthofinder_out/", emit: orthofinder_results
+    path "orthofinder_out/Results_*/Orthogroups/Orthogroups.tsv", emit: ortholog_file
+    path "orthofinder_out/Results_*", emit: orthofinder_results
 
     script:
     """
