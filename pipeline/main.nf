@@ -8,6 +8,7 @@ params.profile            = 'singularity'
 params.rnaseq_config      = 'config/pace_phoenix.config'
 params.rnaseq_pipeline    = "${projectDir}/../nf-core-rnaseq/main.nf"
 params.container_engine   = 'docker'
+params.orthofinder        = false
 
 // A process definition
 process SPLIT_SAMPLES {
@@ -42,6 +43,29 @@ process RUN_RNASEQ {
     """
 }
 
+process RUN_ORTHOFINDER {
+    publishDir "${params.outdir}/orthofinder", mode: 'copy', saveAs: { filename -> filename.minus("orthofinder_out/") }
+
+    conda 'rnole-ortho'
+    
+    input:
+    path my_dir
+
+    output:
+    path "orthofinder_out/Orthogroups/Orthogroups.tsv", emit: ortholog_file
+    path "orthofinder_out/", emit: orthofinder_results
+
+    script:
+    """
+    orthofinder -f ${my_dir} -o orthofinder_out
+    """
+
+}
+
+process FILTER_ONETOONE {
+
+}
+
 // The workflow block
 workflow {
     // Create a channel from your input
@@ -55,4 +79,10 @@ workflow {
     ref_name  = split_out.map { file -> file.baseName }
     
     RUN_RNASEQ(split_out, rnaseq_config_path, ref_full_path,ref_name)
+
+    if (params.orthofinder) {
+        proteomes_ch = Channel.fromPath(params.orthofinder, type: 'dir')
+        RUN_ORTHOFINDER(proteomes_ch)
+        FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
+    }
 }
