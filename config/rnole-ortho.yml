@@ -1,0 +1,10 @@
+name: rnole-ortho
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+  - r
+dependencies:
+  - orthofinder
+  - python=3.12
+prefix: /usr/local/Caskroom/miniforge/base/envs/rnole-ortho
