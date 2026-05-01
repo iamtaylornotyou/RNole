@@ -24,7 +24,7 @@ process SPLIT_SAMPLES {
 }
 
 process RUN_RNASEQ {
-    publishDir "${params.outdir}/${ref_name}", mode: 'copy'
+    publishDir "${params.outdir}/${ref_name}", mode: 'copy', saveAs: { filename -> filename.minus("results/") }
     
     input:
     path my_file
@@ -34,11 +34,11 @@ process RUN_RNASEQ {
 
     output:
     path "**/salmon.merged.gene_counts.tsv", emit: counts
-    path "${ref_name}/**", emit: rnaseq_results
+    path "results/**", emit: rnaseq_results
 
     script:
     """
-    run_rnaseq.sh ${ref_name} "${ref_full_path}" "./" ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}"
+    run_rnaseq.sh ${ref_name} "${ref_full_path}" "results/" ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}"
     """
 }
 
