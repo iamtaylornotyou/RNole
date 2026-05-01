@@ -13,7 +13,7 @@ nextflow run "${rnaseq_pipeline}" \
     --input "${bn}.csv" \
     --fasta "${ref_path}/${bn}.fna.gz" \
     --gtf "${ref_path}/${bn}.gtf.gz" \
-    --outdir "${outdir}/${bn}" \
+    --outdir "${outdir}" \
     --pseudo_aligner salmon \
     --skip_alignment \
     --salmon_index "${ref_path}/${bn}_salmon_index" \
