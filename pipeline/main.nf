@@ -46,7 +46,7 @@ process RUN_RNASEQ {
 process RUN_ORTHOFINDER {
     publishDir "${params.outdir}/orthofinder", mode: 'copy', saveAs: { filename -> filename.minus("orthofinder_out/") }
 
-    conda 'rnole-ortho'
+    conda "${projectDir}/config/rnole-ortho.yml"
     
     input:
     path my_dir
@@ -59,10 +59,21 @@ process RUN_ORTHOFINDER {
     """
     orthofinder -f ${my_dir} -o orthofinder_out
     """
-
 }
 
 process FILTER_ONETOONE {
+    publishDir "${params.outdir}/orthofinder", mode: 'copy'
+
+    input:
+    path my_file
+
+    output:
+    path '*.csv'
+
+    script:
+    """
+    filter_onetoone.py ${my_file}
+    """
 
 }
 
