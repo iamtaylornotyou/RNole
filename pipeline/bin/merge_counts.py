@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # usage: ./merge_counts.py --orthologs <file> --counts <file1> <file2> ... --refs <ref1> <ref2> ... --gene_names_from <ref>
 
+#./pipeline/bin/merge_counts.py --orthologs <file> --counts <file1> <file2> ... --refs <ref1> <ref2> ... --gene_names_from <ref>
+
 import sys
 import argparse
 import pandas as pd 
@@ -32,6 +34,7 @@ for x in range(len(ref_list)):
     ref = ref_list[x]
 
     df = pd.read_csv(file, sep = '\t')
+    df = df.drop(columns = ['gene_name'])
     df = df.rename(columns={'gene_id': ref})
 
     orthos = orthos.merge(df, on=ref, how='left')
