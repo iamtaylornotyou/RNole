@@ -9,6 +9,8 @@ params.rnaseq_config      = 'config/pace_phoenix.config'
 params.rnaseq_pipeline    = "${projectDir}/../nf-core-rnaseq/main.nf"
 params.container_engine   = 'docker'
 params.orthofinder        = false
+params.ortholog_file      = false
+
 
 // A process definition
 process SPLIT_SAMPLES {
@@ -75,6 +77,10 @@ process FILTER_ONETOONE {
 
 }
 
+process MERGE_COUNT_MATRICES {
+
+}
+
 // The workflow block
 workflow {
     // Create a channel from your input
@@ -87,11 +93,21 @@ workflow {
     split_out = SPLIT_SAMPLES.out.flatten()
     ref_name  = split_out.map { file -> file.baseName }
     
-    RUN_RNASEQ(split_out, rnaseq_config_path, ref_full_path,ref_name)
+    RUN_RNASEQ(split_out, rnaseq_config_path, ref_full_path,ref_name) 
 
-    if (params.orthofinder) {
+    // run this block with either the output from above, or a file input by user, or not at all
+    if (params.ortholog_file) {
+        log.warn "Skipping OrthoFinder — using provided ortholog table: ${params.ortholog_file}"
+        ortholog_ch = Channel.fromPath(params.ortholog_file)
+        MERGE_COUNT_MATRICES(ortholog_ch,RUN_RNASEQ.out.counts.collect())
+        // print a warning to user that we're skipping orthofinder becasue file was provided
+
+
+    } else if (params.orthofinder) {
         proteomes_ch = Channel.fromPath(params.orthofinder, type: 'dir')
         RUN_ORTHOFINDER(proteomes_ch)
         FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
+        MERGE_COUNT_MATRICES(FILTER_ONETOONE.out,RUN_RNASEQ.out.counts.collect())
     }
+
 }
