@@ -26,6 +26,10 @@ if not gene_name:
 
 # get the ortholog file
 orthos = pd.read_csv(ortho_filename, sep = ',')
+# after loading orthos
+print("Orthogroup columns:", orthos.columns.tolist())
+#print("Orthogroup sample values:", orthos.head())
+
 
 # iterate through count matrices
 for x in range(len(ref_list)):
@@ -36,8 +40,12 @@ for x in range(len(ref_list)):
     df = pd.read_csv(file, sep = '\t')
     df = df.drop(columns = ['gene_name'])
     df = df.rename(columns={'gene_id': ref})
+    # after loading df
+    print("Count matrix columns:", df.columns.tolist())
+    print("Count matrix gene_id sample values:", df[ref].head())
 
     orthos = orthos.merge(df, on=ref, how='left')
+
 
 other_refs = [r for r in ref_list if r != gene_name]
 orthos = orthos.drop(columns = ['Orthogroup'] + other_refs)
