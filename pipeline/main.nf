@@ -139,7 +139,7 @@ workflow {
         RENAME_FASTA_HEADERS(proteomes_ch)
         RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
         FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
-        MERGE_COUNT_MATRICES(FILTER_ONETOONE.out,RUN_RNASEQ.out.counts.collect())
+        MERGE_COUNT_MATRICES(FILTER_ONETOONE.out,RUN_RNASEQ.out.counts.collect(),RUN_RNASEQ.out.ref_name.collect())
     }
 
 }
