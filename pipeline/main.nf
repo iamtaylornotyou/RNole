@@ -10,6 +10,7 @@ params.rnaseq_pipeline    = "${projectDir}/../nf-core-rnaseq/main.nf"
 params.container_engine   = 'docker'
 params.orthofinder        = false
 params.ortholog_file      = false
+params.gene_names_from    = false
 
 
 // A process definition
@@ -38,6 +39,7 @@ process RUN_RNASEQ {
     output:
     path "**/salmon.merged.gene_counts.tsv", emit: counts
     path "results/**", emit: rnaseq_results
+    val ref_name, emit: ref_name
 
     script:
     """
@@ -78,7 +80,34 @@ process FILTER_ONETOONE {
 }
 
 process MERGE_COUNT_MATRICES {
+    publishDir "${params.outdir}/final_count_matrices", mode: 'copy'
 
+    input:
+    path ortholog_file
+    path count_files // list of count matrices produced by salmon
+    val ref_list
+
+    output:
+
+    script:
+    """
+    merge_counts.py ${ortholog_file} ${count_files} ${params.gene_names_from}
+    """
+
+}
+
+process RENAME_FASTA_HEADERS {
+
+    input:
+    path input_dir
+
+    output:
+    path "renamed/"
+
+    script:
+    """
+    rename_fasta_headers.py ${input_dir} renamed/
+    """
 }
 
 // The workflow block
@@ -97,15 +126,18 @@ workflow {
 
     // run this block with either the output from above, or a file input by user, or not at all
     if (params.ortholog_file) {
-        log.warn "Skipping OrthoFinder — using provided ortholog table: ${params.ortholog_file}"
+        if (params.orthofinder) {
+            // print a warning to user that we're skipping orthofinder becasue file was provided
+            log.warn "Skipping OrthoFinder — using provided ortholog table: ${params.ortholog_file}"
+        }
         ortholog_ch = Channel.fromPath(params.ortholog_file)
-        MERGE_COUNT_MATRICES(ortholog_ch,RUN_RNASEQ.out.counts.collect())
-        // print a warning to user that we're skipping orthofinder becasue file was provided
+        MERGE_COUNT_MATRICES(ortholog_ch,RUN_RNASEQ.out.counts.collect(),RUN_RNASEQ.out.ref_name.collect())
 
 
     } else if (params.orthofinder) {
         proteomes_ch = Channel.fromPath(params.orthofinder, type: 'dir')
-        RUN_ORTHOFINDER(proteomes_ch)
+        RENAME_FASTA_HEADERS(proteomes_ch)
+        RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
         FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
         MERGE_COUNT_MATRICES(FILTER_ONETOONE.out,RUN_RNASEQ.out.counts.collect())
     }
