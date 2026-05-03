@@ -84,14 +84,16 @@ process MERGE_COUNT_MATRICES {
 
     input:
     path ortholog_file
-    path count_files // list of count matrices produced by salmon
+    path count_files, stageAs: "?/counts.tsv"
+    //path count_files, stageAs: "counts_??.tsv" // list of count matrices produced by salmon
     val ref_list
 
     output:
+    path "merged_counts.csv"
 
     script:
     """
-    merge_counts.py ${ortholog_file} ${count_files} ${params.gene_names_from}
+    merge_counts.py --orthologs ${ortholog_file} --counts ${count_files} --refs ${ref_list.join(' ')} --gene_names_from ${params.gene_names_from}
     """
 
 }
