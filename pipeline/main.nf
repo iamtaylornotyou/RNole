@@ -37,7 +37,7 @@ process RUN_RNASEQ {
     val ref_name
 
     output:
-    path "**/salmon.merged.gene_counts.tsv", emit: counts
+    path "results/**/salmon/salmon.merged.gene_counts.tsv", emit: counts
     path "results/**", emit: rnaseq_results
     val ref_name, emit: ref_name
 
