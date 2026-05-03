@@ -8,3 +8,4 @@ ref/
 singularity_cache/
 scratch.R
 proteome/
+test_proteome/
