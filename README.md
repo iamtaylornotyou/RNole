@@ -4,10 +4,10 @@ RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) tha
 ## Table of Contents
 
 - [Installation](#installation)
-- [Simple Usage](#simple-usage)
+- [Usage](#usage)
 - [Test Case](#test-case)
-- [Versioning](#versioning)
 - [Output Files](#output-files)
+- [Versioning](#versioning)
 - [System Requirements](#system-requirements)
 - [Acknowledgements](#acknowledgements)
 
@@ -17,7 +17,7 @@ RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) tha
 
 ```
 
-## Simple Usage
+## Usage
 1. First, prepare a samplesheet with your input data
 
 **Samplesheet Format**
@@ -96,10 +96,6 @@ RNole/
 └── work
 ```
 
-## Versioning
-- Base pipline: nf-core/rnaseq v3.24.0
-- NXF_VER=25.10.4
-
 ## Output files
 
 **```/final_count_matrices```**
@@ -120,6 +116,10 @@ RNole/
 - `/pipeline_info`
 - `/salmon`
 - `/trimgalore`
+
+## Versioning
+- Base pipline: nf-core/rnaseq v3.24.0
+- NXF_VER=25.10.4
 
 ## System Requirements
 **Operating System**
