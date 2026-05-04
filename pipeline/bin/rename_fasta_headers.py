@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# usage: ./rename_fasta_headers.py <input_dir> <output_dir>
+# usage: ./rename_fasta_headers.py <input_dir> <output_dir> <gene_field>
 
 import re
 import sys
@@ -8,6 +8,7 @@ from collections import defaultdict
 
 input_dir  = sys.argv[1]
 output_dir = sys.argv[2]
+gene_field = sys.argv[3]
 
 os.makedirs(output_dir, exist_ok=True)
 
@@ -21,7 +22,7 @@ for filename in os.listdir(input_dir):
         with open(input_file) as f_in, open(output_file, 'w') as f_out:
             for line in f_in:
                 if line.startswith('>'):
-                    match = re.search(r'\[locus_tag=([^\]]+)\]', line)
+                    match = re.search(rf'\[{gene_field}=([^\]]+)\]', line)
                     if match:
                         locus_tag = match.group(1)
                         seen[locus_tag] += 1

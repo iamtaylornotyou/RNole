@@ -11,6 +11,7 @@ params.container_engine   = 'docker'
 params.orthofinder        = false
 params.ortholog_file      = false
 params.gene_names_from    = false
+params.gene_field         = 'gene'
 
 
 // A process definition
@@ -108,7 +109,7 @@ process RENAME_FASTA_HEADERS {
 
     script:
     """
-    rename_fasta_headers.py ${input_dir} renamed/
+    rename_fasta_headers.py ${input_dir} renamed/ ${params.gene_field}
     """
 }
 
