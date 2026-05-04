@@ -1,5 +1,5 @@
 # RNole: RNA-seq Multi-Reference Pipeline
-RNole is an extension of nf-core/rnaseq that supports mutliple reference genomes and ortholog mapping across species. Like nf-core/rnaseq, RNole accepts a samplesheet (`.csv`) as input — with an additional `reference` column specifying the desired reference genome for each sample. Internally, RNole acts as a wrapper, invoking nf-core/rnaseq, once per unique reference genome. Optionally, RNole will produce a merged, ortholog-matched count matrix using either an OrthoFinder run, or a user-supplied ortholog file. 
+RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) that supports mutliple reference genomes and ortholog mapping across species. Like nf-core/rnaseq, RNole accepts a samplesheet (`.csv`) as input — with an additional `reference` column specifying the desired reference genome for each sample. Internally, RNole acts as a wrapper, invoking nf-core/rnaseq, once per unique reference genome. Optionally, RNole will produce a merged, ortholog-matched count matrix using either an [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder/tree/main) run, or a user-supplied ortholog file. 
 
 ## Table of Contents
 
@@ -18,7 +18,24 @@ RNole is an extension of nf-core/rnaseq that supports mutliple reference genomes
 ```
 
 ## Simple Usage
+Run RNole on FASTQ format transcriptomes.
 
+**Samplesheet Format**
+| sample | fastq_1 | fastq_2 | strandedness | reference |
+|--------|---------|---------|--------------|-----------|
+| sample_id | exact/path/to/R1 | exact/path/to/R2 | one of: `stranded`, `unstranded`,`unkn` | ref_name |
+
+```
+NXF_VER=25.10.4 nextflow run pipeline/main.nf \
+    --input <path/to/samplesheet.csv> \
+    --outdir <path/to/output/dir> \
+    --container_engine 'docker' \
+    --rnaseq_config 'config/local.config' \
+    --orthofinder 'path/to/proteome/dir' \
+    --gene_names_from <ref> \
+    -c 'config/local.config' \
+    -profile 'docker'
+```
 
 ## Test Case
 
