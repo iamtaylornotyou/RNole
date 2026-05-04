@@ -13,14 +13,16 @@
 
 # Activate conda environment
 eval "$(/storage/project/r-jstroud36-0/tcooper84/miniconda3/bin/conda shell.bash hook)"
-conda activate rnole-hpc2
+conda activate rnole-hpc
 
 # Run pipeline
 cd /storage/project/r-jstroud36-0/tcooper84/RNole
 
-nextflow run pipeline/main.nf \
-    --input samplesheets/multi_ref_1M.csv \
-    --outdir 'results/multi_ref_test_pace' \
+NXF_VER=25.10.4 nextflow run pipeline/main.nf \
+    --input samplesheets/anole_multi_ref_pace.csv \
+    --outdir 'results/anole_test_pace' \
+    --container_engine 'singularity' \
     --rnaseq_config 'config/pace_phoenix.config' \
-    -c 'config/pace_phoenix.config' \
-    -profile 'singularity'
+    --orthofinder 'proteome_anole/' \
+    --gene_names_from AnoCar \
+    -c 'config/pace_phoenix.config'
