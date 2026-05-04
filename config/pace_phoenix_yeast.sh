@@ -25,5 +25,4 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --rnaseq_config 'config/pace_phoenix.config' \
     --orthofinder 'proteome/' \
     --gene_names_from SchPom \
-    -c 'config/pace_phoenix.config' \
-    -profile 'singularity'
+    -c 'config/pace_phoenix.config'
