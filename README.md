@@ -23,8 +23,18 @@ Run RNole on FASTQ format transcriptomes.
 **Samplesheet Format**
 | sample | fastq_1 | fastq_2 | strandedness | reference |
 |--------|---------|---------|--------------|-----------|
-| sample_id | exact/path/to/R1 | exact/path/to/R2 | one of: `stranded`, `unstranded`,`unkn` | ref_name |
+| sample_id | exact/path/to/R1 | exact/path/to/R2 | one of: `forward_strand`,`reverse_strand`, `unstranded`,`auto` | ref_name |
+| all sample IDs must be unique | path cannot contain spaces | path cannot contain spaces | | all files associated with the reference must be named with same convention |
 
+**samplesheet.csv**:
+```csv
+sample,fastq_1,fastq_2,strandedness,reference
+SagCer_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SacCer_R1_1M.fastq,/Users/iamtaylornotyou/Desktop/RNole/fastq/SacCer_R2_1M.fastq,unstranded,SagCer
+SchPom_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R1_1M.fastq,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R2_1M.fastq,unstranded,SchPom
+```
+
+
+**Command line call**
 ```
 NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --input <path/to/samplesheet.csv> \
