@@ -8,6 +8,9 @@ profile=$4
 config=$5
 rnaseq_pipeline=$6
 
+CONDA_NO_PLUGINS=true
+export CONDA_NO_PLUGINS
+
 # nf-core/rnaseq call
 NXF_CONDA_ENABLED=false nextflow run "${rnaseq_pipeline}" \
     --input "${bn}.csv" \
