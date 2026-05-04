@@ -51,7 +51,6 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --container_engine 'docker' \
     --rnaseq_config 'config/local.config' \
     --orthofinder 'path/to/proteome/dir' \
-    --gene_names_from <ref> \
     -c 'config/local.config' \
     -profile 'docker'
 ```
@@ -60,7 +59,7 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
 ```sh
 #!/bin/bash
 #SBATCH --job-name=rnole_pipeline
-#SBATCH --account=gts-jstroud36
+#SBATCH --account=YOUR_ACCOUNT_HERE
 #SBATCH --partition=cpu-large
 #SBATCH --qos=inferno
 #SBATCH --nodes=1
@@ -72,19 +71,18 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
 #SBATCH --error=logs/rnole_%j.err
 
 # Activate conda environment
-eval "$(/storage/project/r-jstroud36-0/tcooper84/miniconda3/bin/conda shell.bash hook)"
+eval "$(PATH/TO/conda shell.bash hook)"
 conda activate rnole-hpc
 
 # Run pipeline
-cd /storage/project/r-jstroud36-0/tcooper84/RNole
+cd /PATH/TO/RNole
 
 NXF_VER=25.10.4 nextflow run pipeline/main.nf \
-    --input samplesheets/yeast_multi_ref_pace.csv \
-    --outdir 'results/yeast_test_pace' \
+    --input PATH/TO/samplesheet.csv \
+    --outdir <output_dir> \
     --container_engine 'singularity' \
     --rnaseq_config 'config/pace_phoenix.config' \
-    --orthofinder 'proteome/' \
-    --gene_names_from SchPom \
+    --orthofinder 'PATH/TO/proteome/' \
     -c 'config/pace_phoenix.config'
 ```
 
@@ -138,9 +136,6 @@ RNole/
 **```/orthofinder```**
 - `one_to_one_orthologs.csv` one-to-one orthologs filtered from Orthogroups/Orthogroups.tsv
 - `/orthofinder_out` default output files from OrthoFinder
-
-**```/pipeline_info```**
-- THIS MIGHT NOT BE HERE ANYMORE
 
 **```/REF_1...```**
 - results from each nf-core/rnaseq call will populate in a reference-specific directory
