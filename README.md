@@ -33,15 +33,17 @@ SagCer_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SacCer_R1_1M.fastq,/Users/i
 SchPom_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R1_1M.fastq,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R2_1M.fastq,unstranded,SchPom
 ```
 
-2. Download reference data: FASTA, GTF annotation, and deposit in ref/ directory
+2. Download reference data: FASTA, GTF annotation, and deposit in `ref/` directory
+- reference data is expected in `ref/` but can be supplied via `--ref_path`
+- ALL files associated with a reference must have same naming convention (i.e., AnoSag.fna.gz, AnoSag.gtf.gz, AnoSag.faa.gz)
 
 3. Download proteome files and store in a separate directory
+- must use the `translated_cds.faa.gz` proteome, so gene naming conventions match count matrices
+- files must be unzipped
 
-4. 
+4. Run the pipeline
 
-**Command line call**
-
-Local machine (macOS 13.7.3)
+**Command line call**: Local machine (macOS 13.7.3)
 ```
 NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --input <path/to/samplesheet.csv> \
@@ -52,6 +54,38 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --gene_names_from <ref> \
     -c 'config/local.config' \
     -profile 'docker'
+```
+
+**HPC Slurm Submission**: Georgia Tech PACE
+```sh
+#!/bin/bash
+#SBATCH --job-name=rnole_pipeline
+#SBATCH --account=gts-jstroud36
+#SBATCH --partition=cpu-large
+#SBATCH --qos=inferno
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=128G
+#SBATCH --time=24:00:00
+#SBATCH --output=logs/rnole_%j.out
+#SBATCH --error=logs/rnole_%j.err
+
+# Activate conda environment
+eval "$(/storage/project/r-jstroud36-0/tcooper84/miniconda3/bin/conda shell.bash hook)"
+conda activate rnole-hpc
+
+# Run pipeline
+cd /storage/project/r-jstroud36-0/tcooper84/RNole
+
+NXF_VER=25.10.4 nextflow run pipeline/main.nf \
+    --input samplesheets/yeast_multi_ref_pace.csv \
+    --outdir 'results/yeast_test_pace' \
+    --container_engine 'singularity' \
+    --rnaseq_config 'config/pace_phoenix.config' \
+    --orthofinder 'proteome/' \
+    --gene_names_from SchPom \
+    -c 'config/pace_phoenix.config'
 ```
 
 ## Test Case
