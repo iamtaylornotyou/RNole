@@ -21,7 +21,8 @@ RNole is an extension of nf-core/rnaseq that supports mutliple reference genomes
 
 
 ### Data Availability
-Raw FASTQ files, reference genomes, proteomes, and annotation files are not stored in this repository due to file size. Data is available via [Dropbox](https://www.dropbox.com/scl/fo/hlbu0mx9g30xrtqv96jxu/ALl8nR8Vlhk72odw69lmSuM?rlkey=guy52dej43ouwr3qdg006xmhc&st=y90b1e7p&dl=0):
+Raw FASTQ files, reference genomes, proteomes, and annotation files are not stored in this repository due to file size. Data is available via [Dropbox](https://www.dropbox.com/scl/fo/hlbu0mx9g30xrtqv96jxu/ALl8nR8Vlhk72odw69lmSuM?rlkey=ylql3zp2q2wpfpcz7nhgnyo0a&st=7d5hajyr&dl=1)
+*Note: Dropbox link expires 8/2/2026. Contact _____ if access is needed after this date.*
 ```
 test_data/
 ├── fastq
