@@ -22,7 +22,7 @@ RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) tha
 
 **Samplesheet Format**
 | sample | fastq_1 | fastq_2 | strandedness | reference |
-|--------|---------|---------|--------------|-----------|
+|---------|---------|---------|---------|---------|
 | sample_id | exact/path/to/R1 | exact/path/to/R2 | one of: `forward`,`reverse`,`unstranded`,`auto` | ref_name |
 | sample IDs must be unique from reference names | path cannot contain spaces | path cannot contain spaces | strandedness refers to the library preparation and will be automatically inferred if set to `auto` | all files associated with the reference must be named with same convention |
 
