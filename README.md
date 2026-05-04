@@ -21,8 +21,41 @@ RNole is an extension of nf-core/rnaseq that supports mutliple reference genomes
 
 
 ### Data Availability
-Raw FASTQ files, reference genomes, proteomes, and annotation files are not stored in this repository due to file size. 
-Data is available via Dropbox: [link]
+Raw FASTQ files, reference genomes, proteomes, and annotation files are not stored in this repository due to file size. Data is available via [Dropbox](https://www.dropbox.com/scl/fo/hlbu0mx9g30xrtqv96jxu/ALl8nR8Vlhk72odw69lmSuM?rlkey=guy52dej43ouwr3qdg006xmhc&st=y90b1e7p&dl=0):
+```
+test_data/
+├── fastq
+│   ├── SacCer_R1_1M.fastq
+│   ├── SacCer_R2_1M.fastq
+│   ├── SchPom_R1_1M.fastq
+│   └── SchPom_R2_1M.fastq
+├── proteome
+│   ├── SagCer.faa
+│   └── SchPom.faa
+└── ref
+    ├── SagCer.fna.gz
+    ├── SagCer.gtf.gz
+    ├── SagCer_salmon_index
+    ├── SchPom.fna.gz
+    ├── SchPom.gtf.gz
+    └── SchPom_salmon_index
+```
+files need to be unpacked into main directory before running
+```
+RNole/
+├── README.md
+├── config
+├── dockerfiles
+├── fastq
+├── logs
+├── nf-core-rnaseq
+├── pipeline
+├── proteome
+├── ref
+├── results
+├── samplesheets
+└── work
+```
 
 ## Versioning
 - Base pipline: nf-core/rnaseq v3.24.0
