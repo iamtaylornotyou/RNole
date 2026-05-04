@@ -18,13 +18,13 @@ RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) tha
 ```
 
 ## Simple Usage
-Run RNole on FASTQ format transcriptomes.
+1. First, prepare a samplesheet with your input data
 
 **Samplesheet Format**
 | sample | fastq_1 | fastq_2 | strandedness | reference |
 |--------|---------|---------|--------------|-----------|
-| sample_id | exact/path/to/R1 | exact/path/to/R2 | one of: `forward_strand`,`reverse_strand`, `unstranded`,`auto` | ref_name |
-| all sample IDs must be unique | path cannot contain spaces | path cannot contain spaces | | all files associated with the reference must be named with same convention |
+| sample_id | exact/path/to/R1 | exact/path/to/R2 | one of: `forward`,`reverse`,`unstranded`,`auto` | ref_name |
+| sample IDs must be unique from reference names | path cannot contain spaces | path cannot contain spaces | strandedness refers to the library preparation and will be automatically inferred if set to `auto` | all files associated with the reference must be named with same convention |
 
 **samplesheet.csv**:
 ```csv
@@ -33,8 +33,15 @@ SagCer_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SacCer_R1_1M.fastq,/Users/i
 SchPom_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R1_1M.fastq,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R2_1M.fastq,unstranded,SchPom
 ```
 
+2. Download reference data: FASTA, GTF annotation, and deposit in ref/ directory
+
+3. Download proteome files and store in a separate directory
+
+4. 
 
 **Command line call**
+
+Local machine (macOS 13.7.3)
 ```
 NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --input <path/to/samplesheet.csv> \
