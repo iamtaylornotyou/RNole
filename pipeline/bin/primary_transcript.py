@@ -218,7 +218,7 @@ def main(args=None):
             # This is the default, unless we can determine that it is an NCBI
             # file in which case it needs special processing
             gene_name_function_name = GetGeneName_Ensembl
-            q_use_original_accession_line = False
+            q_use_original_accession_line = True
             print('Looking for "gene=" of "gene:" to identify isoforms of same gene')
         CreatePrimaryTranscriptsFile(fn, dout, gene_name_function_name, q_use_original_accession_line)
 
