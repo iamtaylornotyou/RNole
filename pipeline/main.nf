@@ -30,6 +30,9 @@ process SPLIT_SAMPLES {
 
 process RUN_RNASEQ {
     publishDir "${params.outdir}/${ref_name}", mode: 'copy', saveAs: { filename -> filename.minus("results/") }
+    publishDir "${params.outdir}/final_count_matrices", mode: 'copy', saveAs: { filename -> 
+        filename == "results/salmon/salmon.merged.gene_counts.tsv" ? "${ref_name}_sample_counts.tsv" : null 
+    }
     
     input:
     path my_file
