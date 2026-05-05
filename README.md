@@ -13,8 +13,11 @@ RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) tha
 
 ## Installation
 **Install via github**
-```
 
+RNole is currently hosted on github. 
+```
+git clone https://github.com/iamtaylornotyou/RNole.git
+cd RNole
 ```
 
 ## Usage
@@ -41,7 +44,13 @@ SchPom_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R1_1M.fastq,/Users/i
 - must use the `translated_cds.faa.gz` proteome, so gene naming conventions match count matrices
 - files must be unzipped
 
-4. Run the pipeline
+4. Run the pipeline (local)
+
+**Activate conda environment**
+```
+conda env create -f config/rnole-local.yml
+conda activate rnole-local
+```
 
 **Command line call**: Local machine (macOS 13.7.3)
 ```
@@ -55,7 +64,14 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     -profile 'docker'
 ```
 
-**HPC Slurm Submission**: Georgia Tech PACE
+4. Run the pipline (HPC)
+
+**Create conda environment**
+```
+conda env create -f config/rnole-hpc.yml
+```
+
+**Slurm Submission**: Georgia Tech PACE
 ```sh
 #!/bin/bash
 #SBATCH --job-name=rnole_pipeline
