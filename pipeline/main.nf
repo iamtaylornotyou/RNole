@@ -109,7 +109,7 @@ process REMOVE_ISOFORMS {
     script:
     """
     for f in ${proteome_dir}/*.faa; do
-        python ${projectDir}/bin/primary_transcripts.py \$f
+        python ${projectDir}/bin/primary_transcript.py \$f
     done
     """
 }
