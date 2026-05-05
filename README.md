@@ -1,7 +1,4 @@
-# RNole: RNA-seq Multi-Reference Pipeline
-[![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A525.10.4-brightgreen)](https://www.nextflow.io/)
-[![nf-core](https://img.shields.io/badge/built%20on-nf--core-224299)](https://nf-co.re/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# RNole: RNA-seq Multi-Reference Pipeline [![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A525.10.4-brightgreen)](https://www.nextflow.io/) [![nf-core](https://img.shields.io/badge/built%20on-nf--core-224299)](https://nf-co.re/)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) that supports multiple reference genomes and ortholog mapping across species. Like nf-core/rnaseq, RNole accepts a samplesheet (`.csv`) as input — with an additional `reference` column specifying the desired reference genome for each sample. Internally, RNole acts as a wrapper, invoking nf-core/rnaseq, once per unique reference genome. Optionally, RNole will produce a merged, ortholog-matched count matrix using either an [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder/tree/main) run, or a user-supplied ortholog file. 
 
 ## Table of Contents
