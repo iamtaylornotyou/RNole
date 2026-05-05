@@ -46,8 +46,11 @@ for x in range(len(ref_list)):
 
     orthos = orthos.merge(df, on=ref, how='left')
 
+print("orthos head:\n", orthos.head())
+print("df head:\n", df.head())
+print("merging on:", ref)
 
 other_refs = [r for r in ref_list if r != gene_name]
 orthos = orthos.drop(columns = ['Orthogroup'] + other_refs)
 
-orthos.to_csv('ortholog_merged_counts.csv', sep = ',', index = False)
+orthos.to_csv('ortholog_merged_counts.tsv', sep = '\t', index = False)
