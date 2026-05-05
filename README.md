@@ -153,7 +153,7 @@ RNole/
 *activate local conda environment*
 ```bash
 cd RNole
-conda env creat -f config/rnole-local.yml
+conda env create -f config/rnole-local.yml
 ```
 *change samplesheet directories to local paths*
 ```
@@ -171,8 +171,6 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     -c 'config/local.config' \
     -profile 'docker'
 ```
-
-INCLUDE QUICKSTART RUN INFO HERE
 
 ## Command-Line Options
 Command-line options for RNole
