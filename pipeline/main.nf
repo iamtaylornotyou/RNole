@@ -60,10 +60,46 @@ process RUN_ORTHOFINDER {
     output:
     path "orthofinder_out/Results_*/Orthogroups/Orthogroups.tsv", emit: ortholog_file
     path "orthofinder_out/Results_*", emit: orthofinder_results
+    path "orthofinder_out/Results_*/Comparative_Genomics_Statistics/Statistics_Overall.tsv", emit: orthofinder_stats
 
     script:
     """
     orthofinder -f ${my_dir} -o orthofinder_out
+    """
+}
+
+process REPORT_ORTHOFINDER_STATS {
+    debug true
+
+    input:
+    path stats_file
+
+    script:
+    """
+    #!/usr/bin/env python3
+    
+    stats = {}
+    with open("${stats_file}") as f:
+        for line in f:
+            parts = line.strip().split("\t")
+            if len(parts) == 2:
+                stats[parts[0]] = parts[1]
+    
+    total_genes = stats.get("Number of genes", "N/A")
+    total_orthogroups = stats.get("Number of orthogroups", "N/A")
+    single_copy = stats.get("Number of single-copy orthogroups", "N/A")
+    pct_sp_specific_genes = stats.get("Percentage of genes in species-specific orthogroups", "N/A")
+    
+    pct_single_orthogroups = round(int(single_copy) / int(total_orthogroups) * 100, 1) if total_orthogroups != "N/A" and single_copy != "N/A" else "N/A"
+    
+    print(f"\\n{'='*50}")
+    print(f"OrthoFinder Summary")
+    print(f"{'='*50}")
+    print(f"Total genes:                  {total_genes}")
+    print(f"Total orthogroups:            {total_orthogroups}")
+    print(f"Single-copy orthogroups:      {single_copy} ({pct_single_orthogroups}%)")
+    print(f"% species-specific genes:     {pct_sp_specific_genes}%")
+    print(f"{'='*50}\\n")
     """
 }
 
@@ -160,6 +196,7 @@ workflow {
         REMOVE_ISOFORMS(proteomes_ch)
         RENAME_FASTA_HEADERS(REMOVE_ISOFORMS.out)
         RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
+        REPORT_ORTHOFINDER_STATS(RUN_ORTHOFINDER.out.orthofinder_stats)
         FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
         MERGE_COUNT_MATRICES(FILTER_ONETOONE.out,RUN_RNASEQ.out.counts.collect(),RUN_RNASEQ.out.ref_name.collect())
     }
@@ -172,5 +209,6 @@ workflow TEST_ORTHOFINDER {
     REMOVE_ISOFORMS(proteomes_ch)
     RENAME_FASTA_HEADERS(REMOVE_ISOFORMS.out)
     RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
+    REPORT_ORTHOFINDER_STATS(RUN_ORTHOFINDER.out.orthofinder_stats)
     FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
 }
