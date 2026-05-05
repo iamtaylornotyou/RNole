@@ -65,14 +65,14 @@ cd RNole
         -profile 'docker'
     ```
 
-    ### HPC
+    ### HPC (Georgia Tech PACE)
 
     **Create conda environment**
     ```
     conda env create -f config/rnole-hpc.yml
     ```
 
-    **Slurm Submission**: Georgia Tech PACE
+    **Slurm Submission**: 
     ```sh
     #!/bin/bash
     #SBATCH --job-name=rnole_pipeline
