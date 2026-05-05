@@ -1,18 +1,18 @@
 #!/usr/bin/env nextflow
 
 // Parameters
-params.input              = null
-params.outdir             = 'results/unnamed_results'
-params.ref_path           = 'ref'
-params.profile            = 'singularity'
-params.rnaseq_config      = 'config/pace_phoenix.config'
-params.rnaseq_pipeline    = "${projectDir}/../nf-core-rnaseq/main.nf"
-params.container_engine   = 'singularity'
-params.orthofinder        = false
-params.ortholog_file      = false
-params.gene_names_from    = false
-params.gene_field         = 'gene'
-params.with_indexing      = false
+params.input               = null
+params.outdir              = 'results/unnamed_results'
+params.ref_path            = 'ref'
+params.profile             = 'singularity'
+params.rnaseq_config       = 'config/pace_phoenix.config'
+params.rnaseq_pipeline     = "${projectDir}/../nf-core-rnaseq/main.nf"
+params.container_engine    = 'singularity'
+params.orthofinder         = false
+params.ortholog_file       = false
+params.gene_names_from     = false
+params.gene_field          = 'gene'
+params.with_indexing_file  = false
 
 
 // A process definition
@@ -48,7 +48,7 @@ process RUN_RNASEQ {
 
     script:
     """
-    run_rnaseq.sh ${ref_name} "${ref_full_path}" "results/" ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}" ${params.with_indexing}
+    run_rnaseq.sh ${ref_name} "${ref_full_path}" "results/" ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}" ${params.with_indexing_file}
     """
 }
 
