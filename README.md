@@ -31,11 +31,11 @@ cd RNole
     | sample IDs must be unique from reference names | path cannot contain spaces | path cannot contain spaces | strandedness refers to the library preparation and will be automatically inferred if set to `auto` | all files associated with the reference must be named with same convention |
 
     **samplesheet.csv**:
-```csv
+    ```csv
     sample,fastq_1,fastq_2,strandedness,reference
     SagCer_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SacCer_R1_1M.fastq,/Users/iamtaylornotyou/Desktop/RNole/fastq/SacCer_R2_1M.fastq,unstranded,SagCer
     SchPom_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R1_1M.fastq,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R2_1M.fastq,unstranded,SchPom
-```
+    ```
 
 2. **Download reference data: FASTA, GTF annotation, and deposit in `ref/` directory**
     - reference data is expected in `ref/` but can be supplied via `--ref_path`
@@ -161,8 +161,8 @@ Command-line options for RNole
 | `--container_engine` | Container engine | `docker` |
 | `--orthofinder` | Path to proteome directory for OrthoFinder run | `false` |
 | `--ortholog_file` | Path to user-supplied ortholog file | `false` |
-| `--gene_names_from` | Species to use for gene naming in merged matrix | `false` |
-| `--gene_field` | Field to use for gene names | `gene` |
+| `--gene_names_from` | Species gene names to use in merged matrix | first species in samplesheet.csv |
+| `--gene_field` | Select gene field to match count matrix format | `gene` |
 
 
 ## Output files
@@ -171,7 +171,7 @@ Command-line options for RNole
 - `merged_counts.csv` the primary output – merged, ortholog-matched count matrices
 
 **```/orthofinder```**
-- `one_to_one_orthologs.csv` one-to-one orthologs filtered from Orthogroups/Orthogroups.tsv
+- `one_to_one_orthologs.csv` one-to-one orthologs filtered from `Orthogroups/Orthogroups.tsv`
 - `/orthofinder_out` default output files from OrthoFinder
 
 **```/REF_1...```**
