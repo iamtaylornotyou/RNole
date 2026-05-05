@@ -210,7 +210,7 @@ workflow {
         RENAME_FASTA_HEADERS(REMOVE_ISOFORMS.out)
         RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
         REPORT_ORTHOFINDER_STATS(RUN_ORTHOFINDER.out.orthofinder_stats)
-        REPORT_ORTHOFINDER_STATS.out.view {in.text}
+        REPORT_ORTHOFINDER_STATS.out.view {it.text}
         FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
         MERGE_COUNT_MATRICES(FILTER_ONETOONE.out,RUN_RNASEQ.out.counts.collect(),RUN_RNASEQ.out.ref_name.collect())
     }
@@ -224,6 +224,6 @@ workflow TEST_ORTHOFINDER {
     RENAME_FASTA_HEADERS(REMOVE_ISOFORMS.out)
     RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
     REPORT_ORTHOFINDER_STATS(RUN_ORTHOFINDER.out.orthofinder_stats)
-    REPORT_ORTHOFINDER_STATS.out.view {in.text}
+    REPORT_ORTHOFINDER_STATS.out.view {it.text}
     FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
 }
