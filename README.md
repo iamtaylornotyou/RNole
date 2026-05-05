@@ -48,13 +48,13 @@ cd RNole
     ### Local
 
     **Activate conda environment**
-```
+    ```
     conda env create -f config/rnole-local.yml
     conda activate rnole-local
-```
+    ```
 
-*   *Command line call**: Local machine (macOS 13.7.3)
-```
+    **Command line call**: Local machine (macOS 13.7.3)
+    ```
     NXF_VER=25.10.4 nextflow run pipeline/main.nf \
         --input <path/to/samplesheet.csv> \
         --outdir <path/to/output/dir> \
@@ -63,17 +63,17 @@ cd RNole
         --orthofinder 'path/to/proteome/dir' \
         -c 'config/local.config' \
         -profile 'docker'
-```
+    ```
 
     ### HPC
 
     **Create conda environment**
-```
+    ```
     conda env create -f config/rnole-hpc.yml
-```
+    ```
 
     **Slurm Submission**: Georgia Tech PACE
-```sh
+    ```sh
     #!/bin/bash
     #SBATCH --job-name=rnole_pipeline
     #SBATCH --account=YOUR_ACCOUNT_HERE
@@ -101,7 +101,7 @@ cd RNole
         --rnaseq_config 'config/pace_phoenix.config' \
         --orthofinder 'PATH/TO/proteome/' \
         -c 'config/pace_phoenix.config'
-```
+    ```
 
 ## Test Case
 
