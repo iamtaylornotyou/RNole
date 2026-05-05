@@ -6,6 +6,7 @@ RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) tha
 - [Installation](#installation)
 - [Usage](#usage)
 - [Test Case](#test-case)
+- [Command-Line Options]()
 - [Output Files](#output-files)
 - [Versioning](#versioning)
 - [System Requirements](#system-requirements)
@@ -48,13 +49,13 @@ cd RNole
     ### Local machine (macOS 13.7.3)
 
     **Activate conda environment**
-    ```
+    ```bash
     conda env create -f config/rnole-local.yml
     conda activate rnole-local
     ```
 
     **Command line call**
-    ```
+    ```bash
     NXF_VER=25.10.4 nextflow run pipeline/main.nf \
         --input <path/to/samplesheet.csv> \
         --outdir <path/to/output/dir> \
@@ -68,7 +69,7 @@ cd RNole
     ### HPC (Georgia Tech PACE)
 
     **Create conda environment**
-    ```
+    ```bash
     conda env create -f config/rnole-hpc.yml
     ```
 
@@ -147,6 +148,22 @@ RNole/
 
 INCLUDE QUICKSTART RUN INFO HERE
 
+## Command-Line Options
+Command-line options for RNole
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `--input` | Path to samplesheet `.csv` | `null` |
+| `--outdir` | Path to output directory | `results/unnamed_results` |
+| `--ref_path` | Path to reference data directory | `ref/` |
+| `--profile` | Nextflow profile | `singularity` |
+| `--rnaseq_config` | Path to nf-core/rnaseq config file | `config/pace_phoenix.config` |
+| `--rnaseq_pipeline` | Path to nf-core/rnaseq `main.nf` | `projectDir/../nf-core-rnaseq/main.nf` |
+| `--container_engine` | Container engine | `docker` |
+| `--orthofinder` | Path to proteome directory for OrthoFinder run | `false` |
+| `--ortholog_file` | Path to user-supplied ortholog file | `false` |
+| `--gene_names_from` | Species to use for gene naming in merged matrix | `false` |
+| `--gene_field` | Field to use for gene names | `gene` |
+
 
 ## Output files
 
@@ -168,9 +185,9 @@ INCLUDE QUICKSTART RUN INFO HERE
 
 ## Versioning
 
-- Base pipeline: nf-core/rnaseq v3.24.0
-- Nextflow version: 25.10.4
-- OrthoFinder version: 
+- [nf-core/rnaseq](https://github.com/nf-core/rnaseq) version: 3.24.0
+- [Nextflow](https://www.nextflow.io/) version: 25.10.4
+- [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder) version: 3.1.4
 
 ## System Requirements
 
