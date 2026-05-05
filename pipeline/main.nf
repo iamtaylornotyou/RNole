@@ -69,7 +69,6 @@ process RUN_ORTHOFINDER {
 }
 
 process REPORT_ORTHOFINDER_STATS {
-    debug true
     publishDir "${params.outdir}/orthofinder", mode: 'copy'
 
     input:
