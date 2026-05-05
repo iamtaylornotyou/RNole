@@ -1,6 +1,6 @@
 # RNole [![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A525.10.4-brightgreen)](https://www.nextflow.io/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) that supports multiple reference genomes and ortholog mapping across species. Like nf-core/rnaseq, RNole accepts a samplesheet (`.csv`) as input — with an additional `reference` column specifying the desired reference genome for each sample. Internally, RNole acts as a wrapper, invoking nf-core/rnaseq, once per unique reference genome. Optionally, RNole will produce a merged, ortholog-matched count matrix using either an [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder/tree/main) run, or a user-supplied ortholog file. 
+RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) that supports comparative transcriptomics across species. Like nf-core/rnaseq, RNole accepts a samplesheet (`.csv`) as input — with an additional `reference` column specifying the desired reference genome for each sample. Internally, RNole acts as a wrapper, invoking nf-core/rnaseq once per unique reference genome. Optionally, RNole will produce a merged, ortholog-matched count matrix using either an [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder/tree/main) run, or a user-supplied ortholog file. 
 
 ## Table of Contents
 
@@ -16,10 +16,10 @@ RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) tha
 
 ## Installation
 
-###
+### Dependencies
 - [Nextflow](https://www.nextflow.io/docs/latest/install.html) ≥ 25.10.4
 - [conda](https://docs.conda.io/en/latest/miniconda.html)
-- [Docker](https://docs.docker.com/get-docker/) (local) or Singularity (HPC)
+- [Docker](https://docs.docker.com/get-docker/) (local) or [Singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html#) (HPC)
 
 ### Install via github
 ```
@@ -95,7 +95,7 @@ cd RNole
     #SBATCH --error=logs/rnole_%j.err
 
     # Activate conda environment
-    eval "$(PATH/TO/conda shell.bash hook)"
+    eval "$(conda shell.bash hook)"
     conda activate rnole-hpc
 
     # Run pipeline
@@ -164,7 +164,7 @@ Command-line options for RNole
 | `--profile` | Nextflow profile | `singularity` |
 | `--rnaseq_config` | Path to nf-core/rnaseq config file | `config/pace_phoenix.config` |
 | `--rnaseq_pipeline` | Path to nf-core/rnaseq `main.nf` | `projectDir/../nf-core-rnaseq/main.nf` |
-| `--container_engine` | Container engine | `docker` |
+| `--container_engine` | Container engine | `singularity` |
 | `--orthofinder` | Path to proteome directory for OrthoFinder run | `false` |
 | `--ortholog_file` | Path to user-supplied ortholog file | `false` |
 | `--gene_names_from` | Species gene names to use in merged matrix | first species in samplesheet.csv |
@@ -182,7 +182,7 @@ Command-line options for RNole
 
 **```/REF_1...```**
 - results from each nf-core/rnaseq call will populate in a reference-specific directory
-- name comes from 
+- name comes from `samplesheet.csv`
 - `/fastqc` 
 - `/fq_lint`
 - `/multiqc`
@@ -203,15 +203,12 @@ Command-line options for RNole
 RNole was designed to run on an HPC due to large memory requirements.
 - RNole is verified to run on macOS 13.7.3 with small test files.
 
-**Dependencies**
-- Python
-- 
-
 ## Limitations
 
 - paths cannot contain spaces
 - all reference files must have the same name: e.g., `AnoSag.fna.gz`, `AnoSag.gtf.gz`, `AnoSag.faa`
-- 
+- gene names in `.gtf` annotation file must match protein names in `.faa` file
+
 
 ## Acknowledgements
 
