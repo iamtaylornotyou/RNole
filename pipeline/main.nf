@@ -128,7 +128,7 @@ process RENAME_FASTA_HEADERS {
     """
 }
 
-// The workflow block
+// The primary workflow block
 workflow {
     // Create a channel from your input
     ch_samplesheet     = Channel.fromPath(params.input)
@@ -161,4 +161,13 @@ workflow {
         MERGE_COUNT_MATRICES(FILTER_ONETOONE.out,RUN_RNASEQ.out.counts.collect(),RUN_RNASEQ.out.ref_name.collect())
     }
 
+}
+
+// an additional workflow block for testing
+workflow TEST_ORTHOFINDER {
+    proteomes_ch = Channel.fromPath(params.orthofinder, type: 'dir')
+    REMOVE_ISOFORMS(proteomes_ch)
+    RENAME_FASTA_HEADERS(REMOVE_ISOFORMS.out)
+    RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
+    FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
 }
