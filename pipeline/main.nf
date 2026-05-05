@@ -12,7 +12,7 @@ params.orthofinder        = false
 params.ortholog_file      = false
 params.gene_names_from    = false
 params.gene_field         = 'gene'
-params.with_indexing      = true
+params.with_indexing      = false
 
 
 // A process definition
