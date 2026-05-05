@@ -152,12 +152,15 @@ RNole/
 ```
 **change samplesheet directories to local paths**
 ```
-
+sample,fastq_1,fastq_2,strandedness,reference
+SagCer_01,/YOUR/PATH/HERE/RNole/fastq/SacCer_R1_1M.fastq,/YOUR/PATH/HERE/RNole/fastq/SacCer_R2_1M.fastq,unstranded,SagCer
+SchPom_01,/YOUR/PATH/HERE/RNole/fastq/SchPom_R1_1M.fastq,/YOUR/PATH/HERE/RNole/fastq/SchPom_R2_1M.fastq,unstranded,SchPom
 ```
 **activate local conda environment**
 ```bash
 cd RNole
 conda env create -f config/rnole-local.yml
+conda activate rnole-local
 ```
 **run pipeline**
 ```bash
@@ -170,6 +173,42 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --with_indexing_file \
     -c 'config/local.config' \
     -profile 'docker'
+```
+**expected output**
+```
+results/yeast_test/
+├── SagCer
+│   ├── fastqc
+│   ├── fq_lint
+│   ├── multiqc
+│   ├── pipeline_info
+│   ├── salmon
+│   └── trimgalore
+├── SchPom
+│   ├── fastqc
+│   ├── fq_lint
+│   ├── multiqc
+│   ├── pipeline_info
+│   ├── salmon
+│   └── trimgalore
+├── final_count_matrices
+│   ├── SagCer_sample_counts.tsv
+│   ├── SchPom_sample_counts.tsv
+│   └── ortholog_merged_counts.tsv
+└── orthofinder
+    ├── one_to_one_orthologs.csv
+    ├── orthofinder_out
+    └── orthofinder_summary.txt
+```
+```orthofinder_summary.txt
+==================================================
+OrthoFinder Summary
+==================================================
+Total genes:                  11182
+Total orthogroups:            3259
+Single-copy orthogroups:      2314 (71.0%)
+Species-specific genes:       1173 (10.5%)
+==================================================
 ```
 
 ## Command-Line Options
@@ -238,8 +277,6 @@ RNole was designed to run on an HPC due to large memory requirements.
 - all reference files must have the same name: e.g., `AnoSag.fna.gz`, `AnoSag.gtf.gz`, `AnoSag.faa`, `AnoSag_salmon_index/`
 - gene names in `.gtf` annotation file must match protein names in `.faa` file
 - proteome files for OrthoFinder must be in `.faa` format; headers must contain a bracket-style field (e.g., `[gene=]`, `[locus_tag=]`, or a user-specified `--gene_field`) for gene name extraction
-
-
 
 ## Acknowledgements
 
