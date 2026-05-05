@@ -21,7 +21,7 @@ cd RNole
 ```
 
 ## Usage
-1. First, prepare a samplesheet with your input data
+1. **First, prepare a samplesheet with your input data**
 
     **Samplesheet Format**
     | sample | fastq_1 | fastq_2 | strandedness | reference |
@@ -36,16 +36,16 @@ cd RNole
     SchPom_01,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R1_1M.fastq,/Users/iamtaylornotyou/Desktop/RNole/fastq/SchPom_R2_1M.fastq,unstranded,SchPom
 ```
 
-2. Download reference data: FASTA, GTF annotation, and deposit in `ref/` directory
+2. **Download reference data: FASTA, GTF annotation, and deposit in `ref/` directory**
     - reference data is expected in `ref/` but can be supplied via `--ref_path`
     - ALL files associated with a reference must have same naming convention (i.e., AnoSag.fna.gz, AnoSag.gtf.gz, AnoSag.faa.gz)
 
-3. Download proteome files and store in a separate directory
+3. **Download proteome files and store in a separate directory**
     - must use the `translated_cds.faa.gz` proteome, so gene naming conventions match count matrices
     - files must be unzipped
 
-4. Run the pipeline 
-    ### Local
+4. **Run the pipeline**
+    ### Local machine (macOS 13.7.3)
 
     **Activate conda environment**
     ```
@@ -53,7 +53,7 @@ cd RNole
     conda activate rnole-local
     ```
 
-    **Command line call**: Local machine (macOS 13.7.3)
+    **Command line call**
     ```
     NXF_VER=25.10.4 nextflow run pipeline/main.nf \
         --input <path/to/samplesheet.csv> \
