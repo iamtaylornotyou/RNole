@@ -24,4 +24,5 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --rnaseq_config 'config/pace_phoenix.config' \
     --orthofinder 'proteome_anole/' \
     --gene_names_from AnoCar \
+    --with_indexing_file \
     -c 'config/pace_phoenix.config'
