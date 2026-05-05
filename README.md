@@ -45,6 +45,7 @@ cd RNole
 2. **Download reference data: FASTA, GTF annotation, and deposit in `ref/` directory**
     - reference data is expected in `ref/` but can be supplied via `--ref_path`
     - ALL files associated with a reference must have same naming convention (i.e., AnoSag.fna.gz, AnoSag.gtf.gz, AnoSag.faa.gz)
+    - pre-built salmon indexing files can be supplied in the `ref/` directory, include the flag `--with_indexing_file`
 
 3. **Download proteome files and store in a separate directory**
     - must use the `translated_cds.faa.gz` proteome, so gene naming conventions match count matrices
