@@ -111,7 +111,6 @@ cd RNole
 
 ## Test Case
 
-
 ### Data Availability
 Raw FASTQ files, reference genomes, proteomes, and annotation files are not stored in this repository due to file size. Data is available via [Dropbox](https://www.dropbox.com/scl/fo/hlbu0mx9g30xrtqv96jxu/ALl8nR8Vlhk72odw69lmSuM?rlkey=ylql3zp2q2wpfpcz7nhgnyo0a&st=7d5hajyr&dl=1)
 
@@ -150,6 +149,27 @@ RNole/
 ├── samplesheets
 └── work
 ```
+*activate local conda environment*
+```bash
+cd RNole
+conda env creat -f config/rnole-local.yml
+```
+*change samplesheet directories to local paths*
+```
+
+```
+*run pipeline*
+```bash
+NXF_VER=25.10.4 nextflow run pipeline/main.nf \
+    --input samplesheets/yeast_multi_ref.csv \
+    --outdir 'results/yeast_test' \
+    --container_engine 'docker' \
+    --rnaseq_config 'config/local.config' \
+    --orthofinder 'proteome/' \
+    --with_indexing_file \
+    -c 'config/local.config' \
+    -profile 'docker'
+```
 
 INCLUDE QUICKSTART RUN INFO HERE
 
@@ -167,19 +187,23 @@ Command-line options for RNole
 | `--orthofinder` | Path to proteome directory for OrthoFinder run | `false` |
 | `--ortholog_file` | Path to user-supplied ortholog file | `false` |
 | `--gene_names_from` | Species gene names to use in merged matrix | first species in samplesheet.csv |
-| `--gene_field` | Select gene field in proteome `.faa` to match gene name in `.gtf` file | `gene` |
+| `--gene_field` | Select gene field in proteome `.faa` to match gene name in `.gtf` file. `gene` and `locus_tag` are common | `gene` |
+| `--with_indexing_file` | If salmon indexing files are available, pipeline expects them in `/ref` | `false` |
 
 
 ## Output files
 
 **```/final_count_matrices```**
-- `merged_counts.csv` the primary output – merged, ortholog-matched count matrices
+- `ortholog_merged_counts.tsv` the primary output – merged, ortholog-matched count matrices
+- `REF1_sample_counts.tsv` reference-specific count matrix for all quantified genes (unfiltered)
+- `REF2...` count matrix files names come from `samplesheet.csv`
 
 **```/orthofinder```**
 - `one_to_one_orthologs.csv` one-to-one orthologs filtered from `Orthogroups/Orthogroups.tsv`
+- `orthofinder_summary.txt` reports orthologue statistics in human-readable format
 - `/orthofinder_out` default output files from OrthoFinder
 
-**```/REF_1...```**
+**```/REF1...```**
 - results from each nf-core/rnaseq call will populate in a reference-specific directory
 - name comes from `samplesheet.csv`
 - `/fastqc` 
