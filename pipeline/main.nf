@@ -142,7 +142,7 @@ process MERGE_COUNT_MATRICES {
     val ref_list
 
     output:
-    path "merged_counts.csv"
+    path "ortholog_merged_counts.tsv"
 
     script:
     """
