@@ -50,4 +50,4 @@ for x in range(len(ref_list)):
 other_refs = [r for r in ref_list if r != gene_name]
 orthos = orthos.drop(columns = ['Orthogroup'] + other_refs)
 
-orthos.to_csv('merged_counts.csv', sep = ',', index = False)
+orthos.to_csv('ortholog_merged_counts.csv', sep = ',', index = False)
