@@ -70,9 +70,13 @@ process RUN_ORTHOFINDER {
 
 process REPORT_ORTHOFINDER_STATS {
     debug true
+    publishDir "${params.outdir}/orthofinder", mode: 'copy'
 
     input:
     path stats_file
+
+    output:
+    path "orthofinder_summary.txt"
 
     script:
     """
@@ -93,14 +97,22 @@ process REPORT_ORTHOFINDER_STATS {
 
     pct_single_orthogroups = round(int(single_copy) / int(total_orthogroups) * 100, 1) if total_orthogroups != "N/A" and single_copy != "N/A" else "N/A"
     
-    print(f"\\n{'='*50}")
-    print(f"OrthoFinder Summary")
-    print(f"{'='*50}")
-    print(f"Total genes:                  {total_genes}")
-    print(f"Total orthogroups:            {total_orthogroups}")
-    print(f"Single-copy orthogroups:      {single_copy} ({pct_single_orthogroups}%)")
-    print(f"Species-specific genes:       {sp_specific_genes} ({pct_sp_specific_genes}%)")
-    print(f"{'='*50}\\n")
+    lines = [
+        f"\\n{'='*50}",
+        f"OrthoFinder Summary",
+        f"{'='*50}",
+        f"Total genes:                  {total_genes}",
+        f"Total orthogroups:            {total_orthogroups}",
+        f"Single-copy orthogroups:      {single_copy} ({pct_single_orthogroups}%)",
+        f"Species-specific genes:       {sp_specific_genes} ({pct_sp_specific_genes}%)",
+        f"{'='*50}\\n",
+    ]
+    
+    summary = "\\n".join(lines)
+    print(summary)
+    
+    with open("orthofinder_summary.txt", "w") as out:
+        out.write(summary + "\\n")
     """
 }
 
@@ -198,6 +210,7 @@ workflow {
         RENAME_FASTA_HEADERS(REMOVE_ISOFORMS.out)
         RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
         REPORT_ORTHOFINDER_STATS(RUN_ORTHOFINDER.out.orthofinder_stats)
+        REPORT_ORTHOFINDER_STATS.out.view {in.text}
         FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
         MERGE_COUNT_MATRICES(FILTER_ONETOONE.out,RUN_RNASEQ.out.counts.collect(),RUN_RNASEQ.out.ref_name.collect())
     }
@@ -211,5 +224,6 @@ workflow TEST_ORTHOFINDER {
     RENAME_FASTA_HEADERS(REMOVE_ISOFORMS.out)
     RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
     REPORT_ORTHOFINDER_STATS(RUN_ORTHOFINDER.out.orthofinder_stats)
+    REPORT_ORTHOFINDER_STATS.out.view {in.text}
     FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
 }
