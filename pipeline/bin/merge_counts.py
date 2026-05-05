@@ -21,7 +21,7 @@ count_file_list = args.counts
 
 
 # set gene names
-if not gene_name:
+if not gene_name or gene_name == 'false':
     gene_name = ref_list[0]
 
 # get the ortholog file
@@ -50,4 +50,4 @@ for x in range(len(ref_list)):
 other_refs = [r for r in ref_list if r != gene_name]
 orthos = orthos.drop(columns = ['Orthogroup'] + other_refs)
 
-orthos.to_csv('ortholog_merged_counts.tsv', sep = '\t', index = False)
+orthos.to_csv('ortholog_merged_counts.csv', sep = ',', index = False)
