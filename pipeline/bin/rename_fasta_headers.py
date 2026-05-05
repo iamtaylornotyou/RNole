@@ -19,14 +19,18 @@ for filename in os.listdir(input_dir):
         with open(input_file) as f_in, open(output_file, 'w') as f_out:
             for line in f_in:
                 if line.startswith('>'):
-                    # Case 1: already a clean gene name, just strip trailing ]
+                    # Case 1: already a clean gene name, just strip trailing ] (safety net)
                     if re.match(r'^>[A-Za-z0-9_\.]+\]?$', line.strip()):
                         f_out.write(line.strip().rstrip(']') + '\n')
                     else:
-                        # Case 2: full header, try gene_field, then gene=, then locus_tag=
-                        match = (re.search(rf'\[{gene_field}=([^\]]+)\]', line) if gene_field else None) or \
-                                re.search(r'\[gene=([^\]]+)\]', line) or \
-                                re.search(r'\[locus_tag=([^\]]+)\]', line)
+                        # Case 2: full header
+                        if gene_field and gene_field != 'gene':
+                            # strict - only use specified field, no fallback
+                            match = re.search(rf'\[{gene_field}=([^\]]+)\]', line)
+                        else:
+                            # default fallback chain: gene= then locus_tag=
+                            match = re.search(r'\[gene=([^\]]+)\]', line) or \
+                                    re.search(r'\[locus_tag=([^\]]+)\]', line)
                         if match:
                             f_out.write(f'>{match.group(1)}\n')
                         else:
