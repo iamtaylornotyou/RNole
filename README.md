@@ -227,15 +227,18 @@ RNole was designed to run on an HPC due to large memory requirements.
 
 ## Limitations
 
+- all species must have a corresponding reference genome, annotation, and proteome file — partial references are not supported
+- the pipeline assumes all samples in the samplesheet are RNA-seq data from species with available reference genomes
+- the flexibility of nf-core/rnaseq is somewhat lost in this configuration, pseudoalignment with salmon is hardcoded
+- ortholog merging is limited to 1:1 single-copy orthologs; many-to-many relationships and species-specific genes are excluded
+- tested with nf-core/rnaseq v3.24.0 only; compatibility with other versions is not guaranteed
+
+### Common Mistakes
 - paths cannot contain spaces
 - all reference files must have the same name: e.g., `AnoSag.fna.gz`, `AnoSag.gtf.gz`, `AnoSag.faa`, `AnoSag_salmon_index/`
 - gene names in `.gtf` annotation file must match protein names in `.faa` file
-- the flexibility of nf-core/rnaseq is somewhat lost in this configuration, pseudoalignment with salmon is hardcoded
-- ortholog merging is limited to 1:1 single-copy orthologs; many-to-many relationships and species-specific genes are excluded
 - proteome files for OrthoFinder must be in `.faa` format; headers must contain a bracket-style field (e.g., `[gene=]`, `[locus_tag=]`, or a user-specified `--gene_field`) for gene name extraction
-- all species must have a corresponding reference genome, annotation, and proteome file — partial references are not supported
-- the pipeline assumes all samples in the samplesheet are RNA-seq data from species with available reference genomes
-- tested with nf-core/rnaseq v3.24.0 only; compatibility with other versions is not guaranteed
+
 
 
 ## Acknowledgements
