@@ -12,7 +12,7 @@ params.orthofinder        = false
 params.ortholog_file      = false
 params.gene_names_from    = false
 params.gene_field         = 'gene'
-params.index_file         = false
+params.with_indexing      = false
 
 
 // A process definition
@@ -48,7 +48,7 @@ process RUN_RNASEQ {
 
     script:
     """
-    run_rnaseq.sh ${ref_name} "${ref_full_path}" "results/" ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}" ${params.index_file}
+    run_rnaseq.sh ${ref_name} "${ref_full_path}" "results/" ${params.container_engine} "${rnaseq_config_path}" "${params.rnaseq_pipeline}" ${params.with_indexing}
     """
 }
 
