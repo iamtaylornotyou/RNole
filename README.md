@@ -1,5 +1,5 @@
 # RNole: RNA-seq Multi-Reference Pipeline
-RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) that supports mutliple reference genomes and ortholog mapping across species. Like nf-core/rnaseq, RNole accepts a samplesheet (`.csv`) as input — with an additional `reference` column specifying the desired reference genome for each sample. Internally, RNole acts as a wrapper, invoking nf-core/rnaseq, once per unique reference genome. Optionally, RNole will produce a merged, ortholog-matched count matrix using either an [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder/tree/main) run, or a user-supplied ortholog file. 
+RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) that supports multiple reference genomes and ortholog mapping across species. Like nf-core/rnaseq, RNole accepts a samplesheet (`.csv`) as input — with an additional `reference` column specifying the desired reference genome for each sample. Internally, RNole acts as a wrapper, invoking nf-core/rnaseq, once per unique reference genome. Optionally, RNole will produce a merged, ortholog-matched count matrix using either an [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder/tree/main) run, or a user-supplied ortholog file. 
 
 ## Table of Contents
 
@@ -92,7 +92,7 @@ NXF_VER=25.10.4 nextflow run pipeline/main.nf \
 ### Data Availability
 Raw FASTQ files, reference genomes, proteomes, and annotation files are not stored in this repository due to file size. Data is available via [Dropbox](https://www.dropbox.com/scl/fo/hlbu0mx9g30xrtqv96jxu/ALl8nR8Vlhk72odw69lmSuM?rlkey=ylql3zp2q2wpfpcz7nhgnyo0a&st=7d5hajyr&dl=1)
 
-*Note: Dropbox link expires 8/2/2026. Contact _____ if access is needed after this date.*
+*Note: Dropbox link expires 8/2/2026. Please [open an issue](https://github.com/iamtaylornotyou/RNole/issues) to request access after this date.*
 ```
 test_data/
 ├── fastq
@@ -111,7 +111,7 @@ test_data/
     ├── SchPom.gtf.gz
     └── SchPom_salmon_index
 ```
-files need to be unpacked into main directory before running
+*files need to be unpacked into main directory before running*
 ```
 RNole/
 ├── README.md
@@ -127,6 +127,9 @@ RNole/
 ├── samplesheets
 └── work
 ```
+
+INCLUDE QUICKSTART RUN INFO HERE
+
 
 ## Output files
 
@@ -147,15 +150,18 @@ RNole/
 - `/trimgalore`
 
 ## Versioning
-- Base pipline: nf-core/rnaseq v3.24.0
-- NXF_VER=25.10.4
+
+- Base pipeline: nf-core/rnaseq v3.24.0
+- Nextflow version: 25.10.4
+- OrthoFinder version: 
 
 ## System Requirements
+
 **Operating System**
-RNole was designed to run on an HPC due to large memory requirments.
+
+RNole was designed to run on an HPC due to large memory requirements.
 - RNole is verified to run on macOS 13.7.3 with small test files.
 
-**Dependencies**
-
-
 ## Acknowledgements
+
+This pipeline was produced as part of BIOL 8802 Reproducible Bioinformatics. Thank you to Dr. King Jordan, Shikhar Verma, and all other participants for feedback that improved this pipeline. 
