@@ -134,7 +134,7 @@ test_data/
     ├── SchPom.gtf.gz
     └── SchPom_salmon_index
 ```
-*files need to be unpacked into main directory before running*
+**files need to be unpacked into main directory before running**
 ```
 RNole/
 ├── README.md
@@ -150,16 +150,16 @@ RNole/
 ├── samplesheets
 └── work
 ```
-*activate local conda environment*
+**change samplesheet directories to local paths**
+```
+
+```
+**activate local conda environment**
 ```bash
 cd RNole
 conda env create -f config/rnole-local.yml
 ```
-*change samplesheet directories to local paths*
-```
-
-```
-*run pipeline*
+**run pipeline**
 ```bash
 NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --input samplesheets/yeast_multi_ref.csv \
