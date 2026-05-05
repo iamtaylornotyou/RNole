@@ -99,6 +99,21 @@ process MERGE_COUNT_MATRICES {
 
 }
 
+process REMOVE_ISOFORMS {
+    input:
+    path proteome_dir
+
+    output:
+    path "primary_transcripts"
+
+    script:
+    """
+    for f in ${proteome_dir}/*.faa; do
+        python primary_transcripts.py \$f
+    done
+    """
+}
+
 process RENAME_FASTA_HEADERS {
 
     input:
@@ -139,7 +154,8 @@ workflow {
 
     } else if (params.orthofinder) {
         proteomes_ch = Channel.fromPath(params.orthofinder, type: 'dir')
-        RENAME_FASTA_HEADERS(proteomes_ch)
+        REMOVE_ISOFORMS(proteomes_ch)
+        RENAME_FASTA_HEADERS(REMOVE_ISOFORMS.out)
         RUN_ORTHOFINDER(RENAME_FASTA_HEADERS.out)
         FILTER_ONETOONE(RUN_ORTHOFINDER.out.ortholog_file)
         MERGE_COUNT_MATRICES(FILTER_ONETOONE.out,RUN_RNASEQ.out.counts.collect(),RUN_RNASEQ.out.ref_name.collect())
