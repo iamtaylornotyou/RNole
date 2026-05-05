@@ -1,4 +1,7 @@
 # RNole: RNA-seq Multi-Reference Pipeline
+[![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A525.10.4-brightgreen)](https://www.nextflow.io/)
+[![nf-core](https://img.shields.io/badge/built%20on-nf--core-224299)](https://nf-co.re/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) that supports multiple reference genomes and ortholog mapping across species. Like nf-core/rnaseq, RNole accepts a samplesheet (`.csv`) as input — with an additional `reference` column specifying the desired reference genome for each sample. Internally, RNole acts as a wrapper, invoking nf-core/rnaseq, once per unique reference genome. Optionally, RNole will produce a merged, ortholog-matched count matrix using either an [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder/tree/main) run, or a user-supplied ortholog file. 
 
 ## Table of Contents
@@ -6,16 +9,21 @@ RNole is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) tha
 - [Installation](#installation)
 - [Usage](#usage)
 - [Test Case](#test-case)
-- [Command-Line Options]()
+- [Command-Line Options](#command-line-options)
 - [Output Files](#output-files)
 - [Versioning](#versioning)
 - [System Requirements](#system-requirements)
+- [Limitations](#limitations)
 - [Acknowledgements](#acknowledgements)
 
 ## Installation
-**Install via github**
 
-RNole is currently hosted on github. 
+###
+- [Nextflow](https://www.nextflow.io/docs/latest/install.html) ≥ 25.10.4
+- [conda](https://docs.conda.io/en/latest/miniconda.html)
+- [Docker](https://docs.docker.com/get-docker/) (local) or Singularity (HPC)
+
+### Install via github
 ```
 git clone https://github.com/iamtaylornotyou/RNole.git
 cd RNole
@@ -162,7 +170,7 @@ Command-line options for RNole
 | `--orthofinder` | Path to proteome directory for OrthoFinder run | `false` |
 | `--ortholog_file` | Path to user-supplied ortholog file | `false` |
 | `--gene_names_from` | Species gene names to use in merged matrix | first species in samplesheet.csv |
-| `--gene_field` | Select gene field to match count matrix format | `gene` |
+| `--gene_field` | Select gene field in proteome `.faa` to match gene name in `.gtf` file | `gene` |
 
 
 ## Output files
@@ -176,6 +184,7 @@ Command-line options for RNole
 
 **```/REF_1...```**
 - results from each nf-core/rnaseq call will populate in a reference-specific directory
+- name comes from 
 - `/fastqc` 
 - `/fq_lint`
 - `/multiqc`
@@ -195,6 +204,16 @@ Command-line options for RNole
 
 RNole was designed to run on an HPC due to large memory requirements.
 - RNole is verified to run on macOS 13.7.3 with small test files.
+
+**Dependencies**
+- Python
+- 
+
+## Limitations
+
+- paths cannot contain spaces
+- all reference files must have the same name: e.g., `AnoSag.fna.gz`, `AnoSag.gtf.gz`, `AnoSag.faa`
+- 
 
 ## Acknowledgements
 
