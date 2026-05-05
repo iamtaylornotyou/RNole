@@ -104,7 +104,7 @@ process REMOVE_ISOFORMS {
     path proteome_dir
 
     output:
-    path "primary_transcripts"
+    path "${proteome_dir}/primary_transcripts"
 
     script:
     """
