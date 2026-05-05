@@ -20,8 +20,7 @@ cd /storage/project/r-jstroud36-0/tcooper84/RNole
 
 NXF_VER=25.10.4 nextflow run pipeline/main.nf \
     --input samplesheets/anole_multi_ref_pace.csv \
-    --outdir 'results/anole_test_pace' \
-    --container_engine 'singularity' \
+    --outdir 'results/anole_pace' \
     --rnaseq_config 'config/pace_phoenix.config' \
     --orthofinder 'proteome_anole/' \
     --gene_names_from AnoCar \
