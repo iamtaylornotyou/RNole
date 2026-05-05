@@ -89,7 +89,8 @@ process REPORT_ORTHOFINDER_STATS {
     total_orthogroups = stats.get("Number of orthogroups", "N/A")
     single_copy = stats.get("Number of single-copy orthogroups", "N/A")
     pct_sp_specific_genes = stats.get("Percentage of genes in species-specific orthogroups", "N/A")
-    
+    sp_specific_genes = stats.get("Number of genes in species-specific orthogroups", "N/A")
+
     pct_single_orthogroups = round(int(single_copy) / int(total_orthogroups) * 100, 1) if total_orthogroups != "N/A" and single_copy != "N/A" else "N/A"
     
     print(f"\\n{'='*50}")
@@ -98,7 +99,7 @@ process REPORT_ORTHOFINDER_STATS {
     print(f"Total genes:                  {total_genes}")
     print(f"Total orthogroups:            {total_orthogroups}")
     print(f"Single-copy orthogroups:      {single_copy} ({pct_single_orthogroups}%)")
-    print(f"% species-specific genes:     {pct_sp_specific_genes}%")
+    print(f"Species-specific genes:       {sp_specific_genes} ({pct_sp_specific_genes}%)")
     print(f"{'='*50}\\n")
     """
 }
