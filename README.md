@@ -1,10 +1,11 @@
 <p align="center">
   <img src="assets/RNole.png" width="500">
   <br><br>
-  <a href="https://www.nextflow.io/"><img src="https://img.shields.io/badge/nextflow-%E2%89%A525.10.4-brightgreen"></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-  <img src="https://img.shields.io/badge/python-3.11-blue?logo=python">
   <img src="https://img.shields.io/github/last-commit/iamtaylornotyou/RNole?label=active">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <img src="https://img.shields.io/github/v/release/iamtaylornotyou/RNole?include_prereleases">
+  <a href="https://www.nextflow.io/"><img src="https://img.shields.io/badge/nextflow-%E2%89%A525.10.4-brightgreen"></a>
+  <img src="https://img.shields.io/badge/python-3.11-blue?logo=python">
   <img src="https://img.shields.io/badge/run%20with-docker-0db7ed?logo=docker">
   <img src="https://img.shields.io/badge/run%20with-singularity-1d355c?logo=sylabs">
 </p>
