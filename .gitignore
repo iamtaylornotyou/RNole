@@ -11,3 +11,7 @@ proteome/
 test_proteome/
 proteome_anole
 test_data/
+logs/*
+!logs/.gitkeep
+samplesheets/*
+!samplesheets/yeast_multi_ref.csv
