@@ -1,8 +1,12 @@
 <p align="center">
   <img src="assets/RNole.png" width="500">
-  <br>
+  <br><br>
   <a href="https://www.nextflow.io/"><img src="https://img.shields.io/badge/nextflow-%E2%89%A525.10.4-brightgreen"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <img src="https://img.shields.io/badge/python-3.11-blue?logo=python">
+  <img src="https://img.shields.io/github/last-commit/iamtaylornotyou/RNole?label=active">
+  <img src="https://img.shields.io/badge/run%20with-docker-0db7ed?logo=docker">
+  <img src="https://img.shields.io/badge/run%20with-singularity-1d355c?logo=sylabs">
 </p>
 
 RNole (**R**eference-aware **N**extflow-based **o**rtholog-**l**evel **e**xpression) is an extension of [nf-core/rnaseq](https://github.com/nf-core/rnaseq) that supports comparative transcriptomics across species. Like nf-core/rnaseq, RNole accepts a samplesheet (`.csv`) as input — with an additional `reference` column specifying the desired reference genome for each sample. Internally, RNole acts as a wrapper, invoking nf-core/rnaseq once per unique reference genome. Optionally, RNole will produce a merged, ortholog-matched count matrix using either an [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder/tree/main) run, or a user-supplied ortholog file. 
