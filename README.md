@@ -26,7 +26,8 @@ RNole (**R**eference-aware **N**extflow-based **o**rtholog-**l**evel **e**xpress
 ## Installation
 
 ### Dependencies
-- [Nextflow](https://www.nextflow.io/docs/latest/install.html) ≥ 25.10.4
+- [Nextflow](https://www.nextflow.io/docs/latest/install.html) ≥ `25.10.4`
+    - compatibility with Nextflow 26+ requires `export NXF_SYNTAX_PARSER=v1`
 - [conda](https://docs.conda.io/en/latest/miniconda.html)
 - [Docker](https://docs.docker.com/get-docker/) (local) or [Singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html#) (HPC)
 
