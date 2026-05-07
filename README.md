@@ -165,14 +165,15 @@ conda activate rnole-local
 **run pipeline**
 ```bash
 NXF_VER=25.10.4 nextflow run pipeline/main.nf \
-    --input samplesheets/yeast_multi_ref.csv \
-    --outdir 'results/yeast_test' \
-    --container_engine 'docker' \
-    --rnaseq_config 'config/local.config' \
-    --orthofinder 'proteome/' \
-    --with_indexing_file \
-    -c 'config/local.config' \
-    -profile 'docker'
+     --input samplesheets/yeast_multi_ref.csv \
+     --outdir 'results/yeast_test' \
+     --container_engine 'docker' \
+     --rnaseq_config 'config/local.config' \
+     --orthofinder 'proteome/' \
+     --with_indexing_file \
+     --gene_field 'locus_tag' \
+     -c 'config/local.config' \
+     -profile 'docker' 
 ```
 **expected output**
 ```
