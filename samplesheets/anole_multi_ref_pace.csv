@@ -1,5 +1,0 @@
-sample,fastq_1,fastq_2,strandedness,reference
-AnoCar_01,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/car_01_R1_1M.fastq.gz,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/car_01_R2_1M.fastq.gz,unstranded,AnoCar
-AnoSag_01,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/sag_01_R1_1M.fastq.gz,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/sag_01_R2_1M.fastq.gz,unstranded,AnoSag
-AnoCar_02,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/car_02_R1_1M.fastq.gz,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/car_02_R2_1M.fastq.gz,unstranded,AnoCar
-AnoSag_02,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/sag_02_R1_1M.fastq.gz,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/sag_02_R2_1M.fastq.gz,unstranded,AnoSag

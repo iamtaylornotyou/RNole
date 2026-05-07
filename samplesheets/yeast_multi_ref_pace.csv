@@ -1,3 +1,0 @@
-sample,fastq_1,fastq_2,strandedness,reference
-SagCer_01,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/SacCer_R1_1M.fastq,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/SacCer_R2_1M.fastq,unstranded,SagCer
-SchPom_01,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/SchPom_R1_1M.fastq,/storage/project/r-jstroud36-0/tcooper84/RNole/fastq/SchPom_R2_1M.fastq,unstranded,SchPom
